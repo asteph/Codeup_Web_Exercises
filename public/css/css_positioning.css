@@ -1,0 +1,54 @@
+body{
+	color: white;
+}
+main{
+	width: 500px;
+	margin: 0 auto;
+}
+div{
+	width: 50px;
+	height: 50px;
+	border: 1px solid black;
+	padding: 10px;
+	margin: 25px;
+	float: left;
+	font-weight: bold;
+	text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+.clearfix{
+	clear: both;
+}
+.red{
+	background-color: red;
+	margin-left: 0px;
+}
+.orange{
+	background-color: orange;
+}
+.yellow{
+	background-color: yellow;
+}
+.green{
+	background-color: green;
+	margin-left: 0px;
+}
+.blue{
+	background-color: blue;
+}
+.purple{
+	background-color: purple;
+}
+a:hover{
+	color:red;
+}
+.logo{
+	position: relative;
+	bottom: 85px;
+	left: 40px;
+	z-index: -1;
+}
+#ribbon{
+	position: fixed;
+	top: 0px;
+	right: 0px;
+}

@@ -1,0 +1,59 @@
+main{
+	margin: 0px 50px 0px 50px;
+}
+p{
+	margin-left: 35px;
+}
+ul{
+	margin-left: 15px;
+}
+ol{
+	margin-left: 25px;
+}
+dl{
+	margin-left: 30px;
+}
+img{
+	margin-bottom: 20px;
+}
+
+body{
+	background-image: url(/images/paper.jpg);
+	margin: 50px auto;
+    padding: 10px;
+    font-family: Verdana;
+}
+header{
+	font-size: 3em;
+	font-family: "Cedarville Cursive", cursive;
+	font-weight: bolder;
+	text-align: center;
+}
+h2{
+	color: #9E4026;
+	font-family: sans-serif;
+	text-decoration: underline;
+}
+a{
+	color: navy;
+	text-decoration: none;
+}
+a:hover{
+	font-weight: bold;
+}
+a:visited{
+	color: black;
+}
+ul{
+	list-style: square;
+}
+#table{
+	font-size: 1.15rem;
+	margin: 40px 0px 30px 50px;
+}
+th{
+	padding: 10px;
+}
+td{
+	text-align: center;
+}

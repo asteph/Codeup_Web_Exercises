@@ -36,7 +36,10 @@ li:hover > a:hover{
     color: #FFB474;
 }
 /*NOT WORKING*/
-li:active > a:active{
+.nav-pills:active{
+    background-color: white;
+}
+ a:active{
     font-weight: bold;
     color: #FFAC71;
 }

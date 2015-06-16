@@ -87,6 +87,7 @@ div.navbar-custom{
 .navbar-content{
     padding: 50px;
     padding-bottom: 0px;
+    padding-right: 30px;
     color: white;
 }
 .glyphicon{
@@ -102,8 +103,9 @@ div.navbar-custom{
     height: 50px;
     width: 50px;
     border-radius: 50%;
-    background-color:#FFB474;
+    background-color: #8F74D6;
 }
 p.navbar{
     margin-left: 60px;
+    font-size: 13px;
 }

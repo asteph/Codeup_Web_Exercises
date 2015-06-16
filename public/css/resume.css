@@ -1,0 +1,109 @@
+body{
+    background-color: white;
+}
+.header{
+    margin-top: 30px;
+}
+.container {
+    padding-right: 180px;
+    padding-left: 180px;
+    padding-bottom: 60px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.nav_pills{
+    padding-top: 60px;
+    padding-left: 0;
+}
+.blue{
+    background-color: #56D0D3;
+}
+.orange{
+    background-color: #FFB37D;
+}
+.purple{
+    background-color: #8F74D6;
+}
+.green{
+    background-color: #C8F784;
+}
+a{
+    color: #938B8B;
+    background-color: #fff; 
+}
+li:hover > a:hover{
+    background-color: #fff;
+    color: #FFB474;
+}
+/*NOT WORKING*/
+li:active > a:active{
+    font-weight: bold;
+    color: #FFAC71;
+}
+.hello{
+    padding-top: 60px;
+}
+img{
+    margin-left: -60px;
+    margin-top: 30px;
+    height: 380px;
+    width: 380px;
+}
+h1{
+    font-size: 80px;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+}
+h3{
+    font-size: 40px;
+    margin: 10px;
+    margin-left: 0px;
+    padding: 0px 0px 20px 0px;
+    background: transparent;
+}
+div.circles{
+    height: 180px;
+}
+.btn-circle.btn-xl{
+  width: 130px;
+  height: 130px;
+  font-size: 12px;
+  border-radius: 50%;
+  color: white;
+  margin: 10px;
+  float: left;
+}
+.navbar-static-bottom{
+    height: 140px;
+    background-color: #61D0D4;
+}
+div.navbar-custom{
+    height: 140px;
+    padding-bottom: 0px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+.navbar-content{
+    padding: 50px;
+    padding-bottom: 0px;
+    color: white;
+}
+.glyphicon{
+    color:#61D0D4;
+    font-family: 'Glyphicons Halflings';
+    position: relative;
+    left: 10px;
+    top: 10px;
+    font-size: 30px;
+}
+.icon{
+    float: left;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color:#FFB474;
+}
+p.navbar{
+    margin-left: 60px;
+}

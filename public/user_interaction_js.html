@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interact!</title>
+</head>
+<body>
+	
+<script>
+	// todo: Ask the user for their name.
+	//       Keep asking if an empty input is provided.
+	do{
+		var userName = prompt('What is your name?');
+	}
+	while(!userName);
+
+	// todo: Show an alert message that welcomes the user based on their input.
+
+	alert("Welcome to this site, " + userName);
+
+	// todo: Ask the user if they like pizza.
+	//       Based on their answer show a creative alert message.
+	var confirmed = confirm("Click OK if you like pizza, " + userName + ' ? ');
+	if (confirmed){
+		alert("Okay, you passed to human test, you may use the site without interuption.");
+	}
+	else{
+		alert("Are you human?");
+	}
+
+</script>
+</body>
+</html>

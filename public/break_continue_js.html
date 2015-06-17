@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Odd Number Avoider</title>
+</head>
+<body>
+	<h3>Using a random number generator, while loop, for loop, if statement, and continue.</h3>
+	
+<script>
+        var randomOddNumber = Math.floor((Math.random()*50)+1);
+        while (randomOddNumber % 2 == 0){
+        	randomOddNumber = Math.floor((Math.random()*50)+1);
+        }
+        console.log("Random odd number to skip is:" + randomOddNumber);
+        for (var i = 1; i <= 50; i +=2){
+        	if (randomOddNumber == i){
+        		console.log('Yikes! Skipping this number.');
+        		continue;
+        	}
+        	console.log("Here is an odd number:" + i);
+        }
+
+</script>
+</body>
+</html>

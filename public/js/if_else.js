@@ -4,28 +4,22 @@ var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
 var color = colors[Math.floor(Math.random()*colors.length)];
 
 var favorite = 'indigo'; // TODO: change this to your favorite color from the list
-
+console.log(color);
 // TODO: Create a block of if/else statements to check for every color except indigo and violet.
 if (color === 'red'){
-	console.log("The color is red, like a firetruck")
-}
-else if (color === 'orange'){
-	console.log("The color is orange, like an orange")
-}
-else if (color === 'yellow'){
-	console.log("The color is yellow, like a sunflower")
-}
-else if (color === 'green'){
-	console.log("The color is green, like an alligator")
-}
-else if (color === 'blue'){
-	console.log("The color is blue, like the sky")
-}
-else if (color === 'indigo'){
-	console.log("The color is indigo, like those things that are indigo")
-}
-else{
-	console.log("The color is violet, like a violet")
+	console.log("The color is red, like a firetruck");
+}else if (color === 'orange'){
+	console.log("The color is orange, like an orange");
+}else if (color === 'yellow'){
+	console.log("The color is yellow, like a sunflower");
+}else if (color === 'green'){
+	console.log("The color is green, like an alligator");
+}else if (color === 'blue'){
+	console.log("The color is blue, like the sky");
+}else if (color === 'indigo'){
+	console.log("The color is indigo, like those things that are indigo");
+}else{
+	console.log("The color is violet, like a violet");
 }
 
 //check to see if it is my favorite

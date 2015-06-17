@@ -65,33 +65,26 @@ h3{
     padding: 0px 0px 20px 0px;
     background: transparent;
 }
-div.circles{
-    height: 180px;
-}
 .btn-circle.btn-xl{
-  width: 130px;
-  height: 130px;
-  font-size: 12px;
-  border-radius: 50%;
-  color: white;
-  margin: 10px;
-  float: left;
-}
-.navbar-static-bottom{
-    height: 140px;
-    background-color: #61D0D4;
-}
-div.navbar-custom{
-    height: 140px;
-    padding-bottom: 0px;
-    padding-left: 100px;
-    padding-right: 100px;
-}
-.navbar-content{
-    padding: 50px;
-    padding-bottom: 0px;
-    padding-right: 30px;
+    width: 130px;
+    height: 130px;
+    font-size: 12px;
+    border-radius: 50%;
     color: white;
+    margin: 10px;
+    float: left;
+}
+footer{
+    color: white;
+    padding: 40px 80px 40px 150px;
+}
+.icon{
+    float: left;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: #8F74D6;
 }
 .glyphicon{
     color:#61D0D4;
@@ -101,14 +94,10 @@ div.navbar-custom{
     top: 10px;
     font-size: 30px;
 }
-.icon{
-    float: left;
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    background-color: #8F74D6;
+div.footer{
+    padding: 10px 0px 0px 0px;
 }
-p.navbar{
-    margin-left: 60px;
-    font-size: 13px;
+p.footer_div{
+    margin: auto;
+    line-height: 1.25;
 }

@@ -8,10 +8,12 @@
 	
 <script>
         var randomOddNumber = Math.floor((Math.random()*50)+1);
+        // generate a random number until it is odd and print it
         while (randomOddNumber % 2 == 0){
         	randomOddNumber = Math.floor((Math.random()*50)+1);
         }
         console.log("Random odd number to skip is:" + randomOddNumber);
+        // print all the random numbers from 1 to 50, but skip random number from above
         for (var i = 1; i <= 50; i +=2){
         	if (randomOddNumber == i){
         		console.log('Yikes! Skipping this number.');

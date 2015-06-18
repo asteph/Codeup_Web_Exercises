@@ -4,13 +4,6 @@ body{
 .header{
     margin-top: 30px;
 }
-.container {
-    padding-right: 180px;
-    padding-left: 180px;
-    padding-bottom: 60px;
-    margin-right: auto;
-    margin-left: auto;
-}
 .nav_pills{
     padding-top: 60px;
     padding-left: 0;
@@ -47,10 +40,8 @@ li:hover > a:hover{
     padding-top: 60px;
 }
 img{
-    margin-left: -60px;
-    margin-top: 30px;
-    height: 380px;
-    width: 380px;
+    height: 100%;
+    width: 100%;
 }
 h1{
     font-size: 80px;
@@ -73,6 +64,19 @@ h3{
     color: white;
     margin: 10px;
     float: left;
+}
+.container {
+    padding-left: 10%;
+    padding-bottom: 60px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.col-md-12{
+    padding-right: 0px;
+}
+.col-sm-12,
+.col-xs-12{
+    margin-top: 10px;
 }
 footer{
     color: white;
@@ -101,3 +105,5 @@ p.footer_div{
     margin: auto;
     line-height: 1.25;
 }
+
+

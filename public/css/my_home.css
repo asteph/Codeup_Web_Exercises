@@ -1,0 +1,19 @@
+.blue{
+    background-color: #56D0D3;
+}
+.orange{
+    background-color: #FFB37D;
+}
+.purple{
+    background-color: #8F74D6;
+}
+.green{
+    background-color: #C8F784;
+}
+p.navigation{
+	padding-top: 30px;
+}
+p.navigation a{
+	margin-left: 10px;
+	color: gray;
+}

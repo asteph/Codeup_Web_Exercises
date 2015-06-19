@@ -11,8 +11,9 @@
 	// Copy the array of planets you created in the last lesson.
 	var planets = ["Mercury", "Venus", "Earth", "Mars", 'Jupiter', 'Saturn', 'Uranus', 'Neptune'];
 	console.log(planets);
-	
-	function reverseArray2(array){
+
+	// Function that reverses the order of an array given an array as the parameter.
+	function reverseArray(array){
 		for(var i = 0; i < array.length; i++){
 			array.splice(0, 0, array[i]);
 			array.splice((i + 1), 1);
@@ -20,7 +21,14 @@
 		console.log(array);  
 	};
 
-	reverseArray2(planets);
+	// Calling the function with the planets array
+	reverseArray(planets);
+
+
+	var weekDays = ["Sunday", "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday",]
+
+	//Calling the function with the days of the week
+	reverseArray(weekDays);
 
 </script>
 </body>

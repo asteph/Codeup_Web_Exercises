@@ -4,7 +4,7 @@
     <title>Reverse Function</title>
 </head>
 <body>
-	
+	All in the console.
 <script>
 	"use strict";	
 	// todo:
@@ -18,17 +18,17 @@
 			array.splice(0, 0, array[i]);
 			array.splice((i + 1), 1);
 		};
-		console.log(array);  
+		return(array);  
 	};
 
 	// Calling the function with the planets array
-	reverseArray(planets);
+	console.log(reverseArray(planets));
 
 
 	var weekDays = ["Sunday", "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday",]
 
 	//Calling the function with the days of the week
-	reverseArray(weekDays);
+	console.log(reverseArray(weekDays));
 
 </script>
 </body>

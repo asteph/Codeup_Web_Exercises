@@ -1,0 +1,11 @@
+
+.header{
+	padding: 1rem;
+}
+.header a{
+	color: #000;
+}
+.header span{
+	font-size: 3rem;
+	font-weight: bold;
+}

@@ -54,25 +54,15 @@
           	var action = function(operator){
           		if(operator == '+'){
           			var result =  parseInt(leftOperand.value) + parseInt(rightOperand.value);
-          			leftOperand.value = result;
-          			operator.value = '';
-          			rightOperand.value = '';
           		}else if(operator == '-'){
           			var result =  parseInt(leftOperand.value) - parseInt(rightOperand.value);
-          			leftOperand.value = result;
-          			operator.value = '';
-          			rightOperand.value = '';
           		}else if(operator == '*'){
           			var result =  parseInt(leftOperand.value) * parseInt(rightOperand.value);
-          			leftOperand.value = result;
-          			operator.value = '';
-          			rightOperand.value = '';
           		}else if(operator == '/'){
           			var result =  parseInt(leftOperand.value) / parseInt(rightOperand.value);
-          			leftOperand.value = result;
-          			operator.value = '';
-          			rightOperand.value = '';
           		}
+          	leftOperand.value = result;
+          	rightOperand.value = '';	
           	}
           	
           	var beforeOperator = true;
@@ -83,7 +73,7 @@
                 		leftOperand.value += this.value;
                 	}else{
                 		if(this.value == '+' || this.value == '-' || this.value == '*' || this.value == '/'){
-                			operator.value = this.value;
+                			operator.value += this.value;
 	                		beforeOperator = false;
                 		}
                 	}
@@ -92,6 +82,7 @@
                 		rightOperand.value += this.value;
 	                }else if(this.value == '='){
 	                	action(operator.value);
+	                	operator.value ='';
 	                }else{
 	                	leftOperand.value = '';
 	                	operator.value = '';
@@ -99,6 +90,7 @@
 	                	beforeOperator = true;
 	                }		
 	            }
+
             }
 
           	for (var i = 0; i < buttons.length; i++) {

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="/css/calculator2.css">
+	<title>Calculator2</title>
+
+</head>
+<body>
+	<main>
+		<form method="post">
+		<input type="text" id="leftOperand" value="" placeholder="value" class="operand" name="left operand" readonly>
+		<input type="text" id="operator" value="" placeholder="+ - * /" class="operator" name="operator" readonly>
+		<input type="text" id="rightOperand" value="" placeholder="value" class="operand" name="right" readonly>
+		</form>
+		<p class="clearfix">
+			<button id="1" type="button" value="1">1</button>
+			<button id="2" type="button" value="2">2</button>
+			<button id="3" type="button" value="3">3</button>
+			<button id="+" type="button" value="+">+</button>
+		</p>
+		<p class="clearfix">
+			<button id="4" type="button" value="4">4</button>
+			<button id="5" type="button" value="5">5</button>
+			<button id="6" type="button" value="6">6</button>
+			<button id="-" type="button" value="-">-</button>
+		</p>
+		<p class="clearfix">
+			<button id="7" type="button" value="7">7</button>
+			<button id="8" type="button" value="8">8</button>
+			<button id="9" type="button" value="9">9</button>
+			<button id="*" type="button" value="*">*</button>
+		</p>
+		<p class="clearfix">
+			<button id="C" type="button" value="C">C</button>
+			<button id="0" type="button" value="0">0</button>
+			<button id="=" type="button" value="=">=</button>
+			<button id="/" type="button" value="/">/</button>
+		</p>
+	</main>
+<script>
+		(function() {
+
+          	var leftOperand = document.getElementById('leftOperand');
+          	var operator = document.getElementById('operator');
+          	var rightOperand = document.getElementById('rightOperand');
+
+
+          	var buttons = document.getElementsByTagName('button');
+          	var buttonArray = [];
+          	for (var i = 0; i < buttons.length; i++) {
+          		buttonArray.push(buttons[i].value);
+          	}
+          	var action = function(operator){
+          		if(operator == '+'){
+          			var result =  parseInt(leftOperand.value) + parseInt(rightOperand.value);
+          			leftOperand.value = result;
+          			operator.value = '';
+          			rightOperand.value = '';
+          		}else if(operator == '-'){
+          			var result =  parseInt(leftOperand.value) - parseInt(rightOperand.value);
+          			leftOperand.value = result;
+          			operator.value = '';
+          			rightOperand.value = '';
+          		}else if(operator == '*'){
+          			var result =  parseInt(leftOperand.value) * parseInt(rightOperand.value);
+          			leftOperand.value = result;
+          			operator.value = '';
+          			rightOperand.value = '';
+          		}else if(operator == '/'){
+          			var result =  parseInt(leftOperand.value) / parseInt(rightOperand.value);
+          			leftOperand.value = result;
+          			operator.value = '';
+          			rightOperand.value = '';
+          		}
+          	}
+          	
+          	var beforeOperator = true;
+          	var result;
+          	var addStringValue = function(){
+          		if(beforeOperator){
+          			if(this.value % 1 == 0){
+                		leftOperand.value += this.value;
+                	}else{
+                		if(this.value == '+' || this.value == '-' || this.value == '*' || this.value == '/'){
+                			operator.value = this.value;
+	                		beforeOperator = false;
+                		}
+                	}
+                }else{
+                	if(this.value % 1 == 0){
+                		rightOperand.value += this.value;
+	                }else if(this.value == '='){
+	                	action(operator.value);
+	                }else{
+	                	leftOperand.value = '';
+	                	operator.value = '';
+	                	rightOperand.value = '';
+	                	beforeOperator = true;
+	                }		
+	            }
+            }
+
+          	for (var i = 0; i < buttons.length; i++) {
+          		buttons[i].addEventListener('click', addStringValue, false);
+	      	}
+
+        })();
+</script>	
+	
+</body>
+</html>

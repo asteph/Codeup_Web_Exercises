@@ -33,31 +33,26 @@
     <script>
         "use strict";
         (function() {
-            // TODO: Uncomment next line and get the main header element by id
+            // TODO: get the main header element by id
+            // TODO: get the sub header element by id
+            // TODO: get all list items
+            // TODO: get all elements with class name sub-paragraph
             var mainHeader = document.getElementById('main-header');
+            var subHeader = document.getElementById('sub-header');
+            var listItems = document.getElementsByTagName('li');
+            var subParagraphs = document.getElementsByClassName('sub-paragraph');
 
-            // TODO: Set inner html of 
-            var header_listen = function(event){
+            // TODO: change inner html of main header to "JavaScript is Cool"
+            var header_listen = function(){
                 mainHeader.innerHTML = "JavaScript is Cool";
             }
-
-            var btn1 = document.getElementById('btn1').addEventListener('click', header_listen, false);
-            
-
-            // TODO: Uncomment the next line and get the sub header element by id
-            var subHeader = document.getElementById('sub-header');
-
-            // TODO: Set the text color of 
-            var subHeader_listen = function(event){
-                subHeader.style.color = '#00f';
+            // TODO: Set the text color of sub header to blue
+            var subHeader_listen = function(){
+                subHeader.style.color = '#00F';
             }
-            var btn2 = document.getElementById('btn2').addEventListener('click', subHeader_listen, false);
-            // TODO: Uncomment the next line and get all list items
-            var listItems = document.getElementsByTagName('li');
-
-            // TODO: Set text color on every other list item to grey
             // TODO: Set text color of li with dbid = 1 to blue
-            var zebra_listen = function(event){
+            // TODO: Set text color on every other list item to grey
+            var zebra_listen = function(){
                 for (var i = 0; i < listItems.length; i++) {
                     if(listItems[i].getAttribute("data-dbid") === '1'){
                         listItems[i].style.color = '#00F';     
@@ -66,16 +61,17 @@
                     }
                 }
             }
-            var btn3 = document.getElementById('btn3').addEventListener('click', zebra_listen, false);   
-            // TODO: Uncomment the next line and get all elements with class name sub-paragraph
-            var subParagraphs = document.getElementsByClassName('sub-paragraph');
-
             // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
-            var done_listen = function(event){
+            var done_listen = function(){
                 subParagraphs[0].innerHTML = 'Mission Accomplished';
             }
+            //Added event listeners to buttons to call the above 4functions when respective buttons are clicked
+            var btn1 = document.getElementById('btn1').addEventListener('click', header_listen, false);
+            var btn2 = document.getElementById('btn2').addEventListener('click', subHeader_listen, false);
+            var btn3 = document.getElementById('btn3').addEventListener('click', zebra_listen, false);   
             var btn4 = document.getElementById('btn4').addEventListener('click', done_listen, false);
         })();
+            
     </script>
 </body>
 </html>

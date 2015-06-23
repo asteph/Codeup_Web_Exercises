@@ -1,6 +1,10 @@
 
 .header{
 	padding: 1rem;
+	max-width: none;
+}
+.row{
+	max-width: none;
 }
 .header a{
 	color: #000;
@@ -8,4 +12,9 @@
 .header span{
 	font-size: 3rem;
 	font-weight: bold;
+}
+@media only screen and (min-width: medium) {
+
+   body { padding: 3rem; }
+
 }

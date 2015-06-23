@@ -13,8 +13,7 @@
         var interval = 1000;
 
         // TODO: This function needs to be called once every second
-        var intervalId = setInterval(function updateTimer()
-        {
+        var intervalId = setInterval(function() {
             if (detonationTimer == 0) {
                 alert('EXTERMINATE!');
                 document.body.innerHTML = '';

@@ -1,6 +1,8 @@
 main{
 	margin-left: auto;
     margin-right: auto;
+    width: 500px;
+    margin-top: 50px;
 }
 button{
 	width: 80px;
@@ -11,6 +13,7 @@ button{
 	float: left;
 	font-weight: bold;
 	font-size: 20px;
+	background-color: #D4D4D4;
 }
 .clearfix{
 	clear: both;

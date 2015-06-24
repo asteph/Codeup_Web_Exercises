@@ -57,17 +57,17 @@
         //on the left and right box and returns the anser to the first box before clearing
         //the middle and last box
         var doTheMath = function(operator){
-          if(operator == '+'){
+            if(operator == '+'){
             var result =  parseInt(leftOperand.value) + parseInt(rightOperand.value);
-          }else if(operator == '-'){
+            }else if(operator == '-'){
             var result =  parseInt(leftOperand.value) - parseInt(rightOperand.value);
-          }else if(operator == '*'){
+            }else if(operator == '*'){
             var result =  parseInt(leftOperand.value) * parseInt(rightOperand.value);
-          }else if(operator == '/'){
+            }else if(operator == '/'){
             var result =  parseInt(leftOperand.value) / parseInt(rightOperand.value);
-          }
-        leftOperand.value = result;     //returns result to left box
-        rightOperand.value = '';        //clears out right box
+            }
+            leftOperand.value = result;     //returns result to left box
+            rightOperand.value = '';        //clears out right box
         }
         //Each button click will trigger this function which checks for clear, which box
         //should be targeted, operators, or equals and acts accordingly

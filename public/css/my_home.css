@@ -3,6 +3,14 @@
 	padding: 1rem;
 	max-width: none;
 }
+h1{
+	font-weight: bold;
+	padding-left: 0px;
+}
+h2{
+	font-weight: bold;
+	padding-left: 0px;
+}
 .row{
 	max-width: none;
 }
@@ -13,8 +21,16 @@
 	font-size: 3rem;
 	font-weight: bold;
 }
-@media only screen and (min-width: medium) {
-
-   body { padding: 3rem; }
-
+.inline-list {
+	padding-top: 50px;
+}
+.row{
+	padding-bottom: 50px;
+}
+img{
+	height: 100%;
+	border-radius: 50%;
+}
+.picture{
+	padding-top: 80px;
 }

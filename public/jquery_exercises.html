@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Example jQuery Page</title>
+    <style>
+        .important {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Example Page</h1>
+    <div class='codeup'>
+        <h3>NOTICE</h3>
+        <p>This is an important message!</p>
+    </div>
+    <div class="not-important">
+        <h2>Lorem Ipsum</h2>
+        <p>Lorem ipsum dolor sit amet, incididunt ut <span class='codeup'>labore et dolore magna aliqua.</span>, quis ut aliquip ex ea commodo.</p>
+    </div>
+    <p id = "codeup">This is also very important.</p>
+
+	<script src="/js/jquery.js"></script>
+	<script>
+		"use strict";
+
+		$('.codeup').css('border', '1px solid #F00');
+		$('.codeup').css({
+			"font-family": "cursive, Verdana",
+			"font-color": "#CCC",
+			"font-weight": "bold",
+			"font-size": "16px"
+		})
+
+
+	</script>
+	
+</body>
+</html>

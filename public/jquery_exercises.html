@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Example jQuery Page</title>
+    <title>Mouse Events</title>
     <style>
         .important {
             text-align: center;
@@ -28,20 +28,39 @@
 	<script src="/js/jquery.js"></script>
 	<script>
 		"use strict";
+		$(document).ready(function() {
 
-		$('.codeup').css('border', '1px solid #F00');
-		$('.codeup').css({
-			"font-family": "cursive, Verdana",
-			"font-color": "#CCC",
-			"font-weight": "bold",
-			"font-size": "16px"
-		})
-		$('li').css('font-size','20px');
-		$('h1, p, li').css('background-color', '#0FF');
-		alert($('h1').html());
+			var h1Click = false;
+			$('h1').click(function(){
+				if(!h1Click){
+					$(this).css('background-color', '#FF0');
+					h1Click = true;
+				} else{
+					$(this).css('background-color', '#FFF' );
+					h1Click = false;
+				}
+			});
+			var pdblclick = false;
+			$('p').dblclick(function(){
+				if(!pdblclick){
+					$(this).css('font-size', '18px');
+					pdblclick = true;
+				} else{
+					$(this).css('font-size', '16px' );
+					pdblclick = false;
+				}
+			});
+			$('li').hover(
+				function(){
+					$('li').css('color', '#F00');
+				},
+				function(){
+					$('li').css('color', '#000');
+				}
+			);
 
 
-
+		});
 	</script>
 	
 </body>

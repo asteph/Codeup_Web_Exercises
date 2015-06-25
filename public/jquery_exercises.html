@@ -9,7 +9,7 @@
     </style>
 </head>
 <body>
-    <h1>Example Page</h1>
+    <h1>Calling Elements</h1>
     <div class='codeup'>
         <h3>NOTICE</h3>
         <p>This is an important message!</p>
@@ -17,6 +17,11 @@
     <div class="not-important">
         <h2>Lorem Ipsum</h2>
         <p>Lorem ipsum dolor sit amet, incididunt ut <span class='codeup'>labore et dolore magna aliqua.</span>, quis ut aliquip ex ea commodo.</p>
+        <ul>
+        	<li>Lorem ipsum dolor.</li>
+        	<li>Lorem ipsum dolor sit amet.</li>
+        	<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+        </ul>
     </div>
     <p id = "codeup">This is also very important.</p>
 
@@ -31,6 +36,10 @@
 			"font-weight": "bold",
 			"font-size": "16px"
 		})
+		$('li').css('font-size','20px');
+		$('h1, p, li').css('background-color', '#0FF');
+		alert($('h1').html());
+
 
 
 	</script>

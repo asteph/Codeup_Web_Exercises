@@ -29,6 +29,27 @@
 		<dt>Fact 10:</dt>
 		<dd class="">The Yellowstone Caldera, in Yellowstone National Park, is a super volcano that is responsible for three of the world’s six biggest volcano eruptions. It is on pace to blow about 100,000 years from now. So come see it while you still can!</dd>
 	</dl>
+	<h3>Yosemite</h3>
+	<ul>
+		<li>Ribbon Falls in Yosemite National Park is 9 times larger than Niagra Falls</li>
+		<li> El Capitan is the largest granite block in the world</li>
+		<li>Mountains at Yosemite National Park are still growing at a rate of 1 foot per 1,000 years</li>
+		<li>Yosemite Search and Rescue is world famous for their rescue techniques</li>
+	</ul>
+	<h3>Yellowstone</h3>
+	<ul>
+		<li>There are over 40 major waterfalls in Yellowstone</li>
+		<li>The average life span for a lodgepole pine is about 200 years</li>
+		<li>A grizzly bear will eat about 35 pounds of food in a typical day</li>
+		<li>A moose can keep its head underwater for 3 minutes</li>
+	</ul>
+	<h3>Rocky Mountain National Park</h3>
+	<ul>
+		<li>Rocky Mountain National Park averages around 3 million visitors a year.</li>
+		<li>Longs Peak is the tallest mountain in the park, with peak elevation of 14, 259 feet.</li>
+		<li>Trail Ridge Road has a relatively gentle grade, never exceeding 7%, and typically less than 5%.</li>
+		<li>Approximately 11 miles of the drive along Trail Ridge Road are above timberline.</li>
+	</ul>
 	<a id="toggle-facts" href="">hide/ show facts</a>
 
 
@@ -39,6 +60,12 @@
 		$('#toggle-facts').click(function(event){
 			event.preventDefault();
 			$('dd').toggleClass('invisible');
+		});
+		$('ul').each(function(index, element){
+			$(this).children().first().css('font-weight','bold');
+		});
+		$('li').click(function(event){
+			$(this).parent().addClass('invisible');
 		});
 	});
 </script>	

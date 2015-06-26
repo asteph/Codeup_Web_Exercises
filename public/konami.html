@@ -12,7 +12,7 @@
 	
 	<div id="videoModal" class="reveal-modal large" data-reveal aria-labelledby="videoModalTitle" aria-hidden="true" role="dialog">
 	  	<div class="flex-video widescreen vimeo">
-	    	<iframe width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+	  		<iframe width="560" height="315" src="https://www.youtube.com/embed/4ZZYBglshho" frameborder="0" allowfullscreen></iframe>	  	
 	  	</div>
 	<a class="close-reveal-modal" aria-label="Close">&#215;</a>
 	</div>
@@ -42,11 +42,7 @@
 					}
 				}
 				if(result){
-					$('iframe').attr('src', '/video/dance_boxing.mp4');
 					$('#videoModal').foundation('reveal', 'open');
-					$('.close-reveal-modal').click(function(){
-						$('iframe').attr('src', "");
-					});
 				}
 			}
 		});

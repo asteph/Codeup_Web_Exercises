@@ -56,15 +56,18 @@
 <script src="/js/jquery.js"></script>
 <script>
 	"use strict";
+	//show and hide facts when link is clicked
 	$(document).ready(function(){
 		$('#toggle-facts').click(function(event){
 			event.preventDefault();
 			$('dd').toggleClass('invisible');
 		});
-		$('ul').each(function(index, element){
+		//highlight first child of each park in the h3 tags
+		$('ul').each(function(){
 			$(this).children().first().css('font-weight','bold');
 		});
-		$('li').click(function(event){
+		//hide the entire unorderedlist when one of the list items is clicked
+		$('li').click(function(){
 			$(this).parent().addClass('invisible');
 		});
 	});

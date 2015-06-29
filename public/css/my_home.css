@@ -1,6 +1,5 @@
 
 .header{
-	padding: 1rem;
 	max-width: none;
 }
 h1{
@@ -24,11 +23,21 @@ h2{
 .inline-list {
 	padding-top: 50px;
 }
+.inline-list > li {
+  	display: block;
+  	float: left;
+  	list-style: none;
+  	margin-left: 1.25rem;
+}
+#first{
+	margin-left: 0px;
+}
 .row{
 	padding-bottom: 50px;
 }
 img{
 	height: 100%;
+	width: 100%;
 	border-radius: 50%;
 }
 .picture{

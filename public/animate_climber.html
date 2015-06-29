@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Animate</title>
+    <style>
+        html, body {
+            margin: 0px;
+            padding: 0;
+        }
+        #btn-animate {
+            margin: 15px;
+        }
+		#mountain-climber{
+			height: 200px;
+			position: relative;
+		}
+		#boulder{
+			height: 50px;
+			width: 50px;
+			top: 0px;
+			left: 50%;
+			position: fixed;
+		}
+    </style>
+</head>
+<body>
+	<h1>Climb On!</h1>
+
+    <p>
+        <button id="btn-move">Move It</button>
+
+        <button id="btn-scale-up">Scale It</button>
+
+        <button id="btn-disappear">Disappear It</button>
+
+        <button id="btn-show">Show It</button>
+
+        <button id="btn-all">Animate all</button>
+    </p>
+	<img id="mountain-climber" src="/images/mountain_climber.png" alt="Mountain climber cartoon">	
+	<img id="boulder" src="/images/boulder.gif" alt="boulder">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+
+        (function(){
+
+            'use strict';
+            $('document').ready(function(){
+            	$(document).keyup(function(event){
+            		//make a switch!
+            		var boulder = document.getElementById("boulder").src;
+	            	//key up
+					if (event.keyCode == '38'){
+						$('#mountain-climber').animate({top: "-=50"}, 10);
+					}
+	            	//key down
+					else if (event.keyCode == '40'){
+						$('#mountain-climber').animate({top: "+=50"}, 10);
+					}
+	            	//key left
+					else if (event.keyCode == '37'){
+						$('#mountain-climber').animate({left: "-=50"}, 10);
+					}
+	            	//key right
+					else if (event.keyCode == '39'){
+						$('#mountain-climber').animate({left: "+=50"}, 10);
+					}
+				});	
+            	// todo: Move the mountain-climber by 100 pixels from the left
+                $('#btn-move').click(function(){
+                    $('#mountain-climber').animate({left: "+=100"}, 500);
+                });
+                // todo: Scale the width up by 50%
+                $('#btn-scale-up').click(function(){
+                    $('#mountain-climber').animate({
+                    	width: "10%",
+                    	height: "10%"
+                    }, 500);
+                });
+                // todo: Use opacity to make the mountain-climber invisible
+                $('#btn-disappear').click(function(){
+                    $('#mountain-climber').animate({opacity: "0"}, 500);
+                });
+                // todo: Make the mountain-climber appear again with opacity
+                $('#btn-show').click(function(){
+                    $('#mountain-climber').animate({opacity: "1"}, 500);
+                });
+                // todo: Once all is done see if you can chain all the animations
+                // to happen with the `Animate all` button.
+                $('#btn-all').click(function(){
+                    $('#mountain-climber')
+                        .animate({left: "+=100",
+                            width: '10%',
+                            height: '10%'
+                        }, 500)
+                        .delay(1000)
+                        .animate({
+                            opacity: '0',
+                        }, 500)
+                        .delay(1000)
+                        .animate({
+                            opacity: '1',
+                        }, 500);
+                });
+                // Refresh to start over before hitting the button.
+          		setInterval(function(){
+          			$(boulder).animate({top: "+=10"}, 10);
+          		}, 300);
+            });
+        })();
+    
+    </script>
+</body>
+</html>

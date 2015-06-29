@@ -60,15 +60,15 @@
 	$(document).ready(function(){
 		$('#toggle-facts').click(function(event){
 			event.preventDefault();
-			$('dd').toggle();
+			$('dd').fadeToggle();
 		});
 		//bold first child of each ul list for the park in the h3 tags
 		$('ul').each(function(){
 			$(this).children().first().css('font-weight','bold');
 		});
-		//hide the entire unorderedlist when one of the list items is clicked
-		$('li').click(function(){
-			$(this).parent().hide();
+		//when an h3 is clicked the next item (ul) will hide and show with fade
+		$('h3').click(function(){
+			$(this).next('ul').fadeToggle();
 		});
 	});
 </script>	

@@ -60,15 +60,15 @@
 	$(document).ready(function(){
 		$('#toggle-facts').click(function(event){
 			event.preventDefault();
-			$('dd').fadeToggle();
+			$('dd').slideToggle();
 		});
 		//bold first child of each ul list for the park in the h3 tags
 		$('ul').each(function(){
 			$(this).children().first().css('font-weight','bold');
 		});
-		//when an h3 is clicked the next item (ul) will hide and show with fade
+		//when an h3 is clicked the next item (ul) will hide and show with slides
 		$('h3').click(function(){
-			$(this).next('ul').fadeToggle();
+			$(this).next('ul').slideToggle();
 		});
 	});
 </script>	

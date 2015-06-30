@@ -30,12 +30,5 @@
             "tool"
         ],
         "price": 10
-    }, {
-        "title": "Pliers",
-        "quantity": 50,
-        "categories": [
-            "tool, electrical"
-        ],
-        "price": 15
     }
 ]

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax blog</title>
+</head>
+<body>
+	<div id="posts"></div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script>
+		var ajaxRequest = $.get("/data/blog.json");
+		console.log(ajaxRequest);
+
+		ajaxRequest.always(function(){
+            console.log('Request sent');
+        });
+
+        ajaxRequest.fail(function(){
+            console.log('The request failed');
+        });
+
+        ajaxRequest.done(function(data){
+            var blogPosts = data;
+            var blogString = '';
+            blogPosts.forEach(function(blogPost, index){
+                var title = '<p><h3>' + blogPost.title + '</h3></p><p>';
+                console.log(title);
+                var content = blogPost.content + '</p><p>';
+                console.log(content);
+                var categories = 'Categories: ' + blogPost.categories + '</p><p>';
+                var date = 'Date: ' + blogPost.date + '</p>';
+                
+                blogString += title + content + categories + date;
+                console.log(blogString);
+            });
+            $('#posts').html(blogString);
+        });
+
+	</script>
+</body>
+</html>

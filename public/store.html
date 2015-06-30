@@ -40,7 +40,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Start Bootstrap</a>
+                <a class="navbar-brand" href="#">Fix it Appliances</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -49,7 +49,7 @@
                         <a href="#">About</a>
                     </li>
                     <li>
-                        <a href="#">Services</a>
+                        <a href="#">Products</a>
                     </li>
                     <li>
                         <a href="#">Contact</a>
@@ -67,11 +67,12 @@
         <div class="row">
 
             <div class="col-md-3">
-                <p class="lead">Shop Name</p>
+                <p class="lead">Fix it</p>
                 <div class="list-group">
-                    <a href="#" class="list-group-item">Category 1</a>
-                    <a href="#" class="list-group-item">Category 2</a>
-                    <a href="#" class="list-group-item">Category 3</a>
+                    <a href="#" class="list-group-item">Tool</a>
+                    <a href="#" class="list-group-item">Powered</a>
+                    <a href="#" class="list-group-item">Outdoor</a>
+                    <a href="#" class="list-group-item">Gas</a>
                 </div>
             </div>
 
@@ -88,13 +89,13 @@
                             </ol>
                             <div class="carousel-inner">
                                 <div class="item active">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                    <img class="slide-image" src="http://lorempixel.com/800/300/abstract" alt="">
                                 </div>
                                 <div class="item">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                    <img class="slide-image" src="http://lorempixel.com/800/300/abstract" alt="">
                                 </div>
                                 <div class="item">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                    <img class="slide-image" src="http://lorempixel.com/800/300/abstract" alt="">
                                 </div>
                             </div>
                             <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
@@ -112,7 +113,7 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
+                            <img id="picture0" src="http://placehold.it/320x150" alt="">
                             <div class="caption">
                                 <h4 class="pull-right" id="price0">$24.99</h4>
                                 <h4><a href="#" id="title0">First Product</a>
@@ -135,7 +136,7 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
+                            <img id="picture1" src="http://placehold.it/320x150" alt="">
                             <div class="caption">
                                 <h4 class="pull-right" id="price1">$64.99</h4>
                                 <h4><a href="#" id="title1">Second Product</a>
@@ -158,7 +159,7 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
+                            <img id="picture2" src="http://placehold.it/320x150" alt="">
                             <div class="caption">
                                 <h4 class="pull-right" id="price2">$74.99</h4>
                                 <h4><a href="#" id="title2">Third Product</a>
@@ -181,7 +182,7 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
+                            <img id="picture3" src="http://placehold.it/320x150" alt="">
                             <div class="caption">
                                 <h4 class="pull-right" id="price3">$84.99</h4>
                                 <h4><a href="#" id="title3">Fourth Product</a>
@@ -204,7 +205,7 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
+                            <img id="picture4" src="http://placehold.it/320x150" alt="">
                             <div class="caption">
                                 <h4 class="pull-right" id="price4">$94.99</h4>
                                 <h4><a href="#" id="title4">Fifth Product</a>
@@ -279,10 +280,12 @@
                     var quantity_number = ('#quantity' + index);
                     var price_number = ('#price' + index);
                     var categories_number = ('#categories' + index);
+                    var picture_number = ('#picture' + index)
                     $(title_number).html(tool.title);
                     $(quantity_number).html('Quantity: ' + tool.quantity);
                     $(price_number).html('$' + tool.price);
                     $(categories_number).html('Categories: ' + tool.categories);
+                    $(picture_number).attr('src', tool.picture);
                 });
             });
         }

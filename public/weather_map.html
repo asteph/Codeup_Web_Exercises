@@ -23,6 +23,9 @@
             max-width: none;
             padding: 20px;
         }
+        .panel{
+            margin-bottom: 0px;
+        }
         .display{
             text-align: center;
             padding-top: 40px;
@@ -36,6 +39,9 @@
           font-size: 70%;
           line-height: 0;
         }
+        #map-canvas {
+          height: 400px;
+        }
 
     </style>
 </head>
@@ -47,13 +53,32 @@
         <div id="day2" class="medium-4 panel display column"></div>
         <div id="day3" class="medium-4 panel display column"></div>
     </div>
+    <form action="get">
+        <div class="row collapse">
+            <div class="medium-3 column">
+                <input type="text" placeholder="Latitude">
+            </div>
+            <div class="medium-3 column">
+                <input type="text" placeholder="Longitude">
+            </div>
+            <div class="medium-1 column left">
+                <button class="postfix" id="getCoordinates" type="button">Go!</button>
+            </div>    
+        </div>
+    </form>
+    <div class="row">
+    <!-- div to hold map -->
+        <div id="map-canvas" class="medium-12 column"></div>
+    </div>
     <div class="row"><h3>Today's Weather</h3>
         <div id="today" class="medium-4 panel display column"></div>
     </div>
 
     </main>
 	<script src="/js/jquery.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPIWmV7Hr4cSzUt_5xQryNKNfmqFRIGpk"></script>
 	<script>
+        'use strict';
         var getTodaysWeather = function() {
             var ajaxRequest = $.get("http://api.openweathermap.org/data/2.5/weather", {
                 APPID: '6b489de4bdc204fcc2edd0aeb72f4542',
@@ -127,6 +152,53 @@
 
         getForecastWeather(); 
         getTodaysWeather();
+        $('#getCoordinates').click(function(){
+            //grab the values from lat and long and use for ajax request/ google map
+        }); // Set our map options
+        var mapOptions = {
+          // Set the zoom level
+          zoom: 18,
+          // This sets the center of the map at our location
+          center: { lat: 29.4284595, lng: -98.492433 }
+        };
+        // Render the map
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+        // // Set our address to geocode
+        // var address = '111 W Crockett St, San Antonio, TX 78205';
+
+        // // Init geocoder object
+        // var geocoder = new google.maps.Geocoder();
+
+        // // Geocode our address
+        // geocoder.geocode( { 'address': address}, function(results, status) {
+        //   // Check for a successful result
+        //   if (status == google.maps.GeocoderStatus.OK) {
+        //   // Set our map options
+        //     var mapOptions = {
+        //       // Set the zoom level
+        //       zoom: 18,
+        //       // This sets the center of the map at our location
+        //       center: results[0].geometry.location
+        //     } 
+        //     //render the map
+        //     var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+        //     //add marker to existing map
+        //     var marker = new google.maps.Marker({
+        //     position: results[0].geometry.location,
+        //     map: map
+        //     });
+        //     // Create a new infoWindow object with content
+        //     var infowindow = new google.maps.InfoWindow({
+        //       content: '<img src="/images/italian_flag_favicon.jpg" alt="Italian Flag"/><strong><em>Paesanos:</em></strong><br><div>Timeless Italian on the San Antonio River Walk.</div>'
+        //     });
+        //     // Open the window using our map and marker
+        //     infowindow.open(map,marker);
+        //   } else{
+        //       // Show an error message with the status if our request fails
+        //       alert("Geocoding was not successful - STATUS: " + status);
+        //   }
+        // });
     </script>
     <script src="/js/foundation.min.js"></script>
     <script>$(document).foundation();</script>

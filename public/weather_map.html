@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Weather API</title>
+</head>
+<body>
+	<h1>Weather Example</h1>
+    <h3>Today's Weather</h3>
+    <div id="today"></div>
+	<script src="/js/jquery.js"></script>
+	<script>
+		var ajaxRequest = $.get("http://api.openweathermap.org/data/2.5/weather", {
+            APPID: '6b489de4bdc204fcc2edd0aeb72f4542',
+            q: 'San Antonio, TX',
+            units: 'Imperial'
+        });
+
+		ajaxRequest.always(function(){
+            console.log('Request sent');
+        });
+
+        ajaxRequest.fail(function(){
+            console.log(error);
+            console.log(ajaxRequest.status);
+        });
+
+        ajaxRequest.done(function(data){
+            var weatherData = data;
+        	console.log(weatherData);
+            var today_highLow = weatherData.main.temp_max + ' &#8457 / ' + weatherData.main.temp_min + ' &#8457 ';
+            console.log(weatherData.weather[0].icon);
+            var today_image = '<br><img src="http://openweathermap.org/img/w/' + weatherData.weather[0].icon + '.png" alt="">'
+            var today_description = '<br>' + '<strong>' + weatherData.weather[0].main + ': </strong>' + weatherData.weather[0].description;
+            var today_humidity = '<br><strong>Humidity: </strong>' + weatherData.main.humidity + '%';
+            var today_wind = '<br><strong>Wind: </strong>' + weatherData.wind.speed + ' mph, ' + weatherData.wind.deg + ' deg';   
+            var today_pressure = '<br><strong>Pressure: </strong>' + weatherData.main.pressure; 
+            var today = today_highLow + today_image + today_description + today_humidity + today_wind + today_pressure;
+            $('#today').html(today);
+
+
+        });
+	</script>
+</body>
+</html>

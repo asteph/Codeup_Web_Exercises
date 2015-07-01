@@ -2,44 +2,124 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+    <meta charset="utf-8">
+    <!-- If you delete this meta tag World War Z will become a reality -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- If you are using the CSS version, only link these 2 files, you may add app.css to use for your overrides if you like -->
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/foundation.css">
+    <!-- If you are using the gem version, you need this only -->
+    <link rel="stylesheet" href="/css/app.css">
+    <script src="/js/vendor/modernizr.js"></script>
 	<title>Weather API</title>
+    <style type="text/css">
+        main{
+            padding: 10px;
+        }
+        .row{
+            max-width: none;
+            padding: 10px;
+        }
+        #today{
+            height: 350px;
+            width: 300px;
+            text-align: center;
+            margin-left: 20px;
+        }
+        .display{
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-	<h1>Weather Example</h1>
-    <h3>Today's Weather</h3>
-    <div id="today"></div>
+    <main>
+	<h1>Weather Application</h1>
+    
+    <div id="today" class="panel"><h3>Today's Weather</h3></div>
+    <div class="row" id="forecast"><h3>3 Day Forecast</h3>
+        <div id="day1" class="medium-4 panel display column"></div>
+        <div id="day2" class="medium-4 panel display column"></div>
+        <div id="day3" class="medium-4 panel display column"></div>
+    </div>
+
+    </main>
 	<script src="/js/jquery.js"></script>
 	<script>
-		var ajaxRequest = $.get("http://api.openweathermap.org/data/2.5/weather", {
-            APPID: '6b489de4bdc204fcc2edd0aeb72f4542',
-            q: 'San Antonio, TX',
-            units: 'Imperial'
-        });
+        var getTodaysWeather = function() {
+            var ajaxRequest = $.get("http://api.openweathermap.org/data/2.5/weather", {
+                APPID: '6b489de4bdc204fcc2edd0aeb72f4542',
+                q: 'San Antonio, TX',
+                units: 'Imperial'
+            });
 
-		ajaxRequest.always(function(){
-            console.log('Request sent');
-        });
+            ajaxRequest.always(function(){
+                console.log('Request sent');
+            });
 
-        ajaxRequest.fail(function(){
-            console.log(error);
-            console.log(ajaxRequest.status);
-        });
+            ajaxRequest.fail(function(){
+                console.log(error);
+                console.log(ajaxRequest.status);
+            });
 
-        ajaxRequest.done(function(data){
+            ajaxRequest.done(function(data){
+                getWeather(data);
+            });
+        };
+        var getForecastWeather = function() {
+    		var ajaxRequest = $.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
+                APPID: '6b489de4bdc204fcc2edd0aeb72f4542',
+                q: 'San Antonio, TX',
+                units: 'Imperial'
+            });
+
+            ajaxRequest.always(function(){
+                console.log('Request sent');
+            });
+
+            ajaxRequest.fail(function(){
+                console.log(error);
+                console.log(ajaxRequest.status);
+            });
+
+            ajaxRequest.done(function(data){
+                console.log(data);
+                getForecast(data);
+            });
+        };
+        var getForecast= function(data){
+            var weatherData = data;
+            console.log(weatherData);
+            console.log(weatherData.list[0].temp.max);
+            for(var i = 0; i < 3; i++){
+                var forecast_highLow = weatherData.list[i].temp.max + ' &#8457 / ' + weatherData.list[i].temp.min + ' &#8457 ';
+                var forecast_image = '<p><img src="http://openweathermap.org/img/w/' + weatherData.list[i].weather[0].icon + '.png" alt=""></p>';
+                var forecast_description = '<p><strong>' + weatherData.list[i].weather[0].main + ': </strong>' + weatherData.list[i].weather[0].description + '</p>';
+                var forecast_humidity = '<p><strong>Humidity: </strong>' + weatherData.list[i].humidity + '%</p>';
+                var forecast_wind = '<p><strong>Wind: </strong>' + weatherData.list[i].speed + ' mph, ' + weatherData.list[i].deg + ' deg</p>';   
+                var forecast_pressure = '<p><strong>Pressure: </strong>' + (weatherData.list[i].pressure * 0.0295333727).toFixed(2) + ' inHg</p>'; 
+                var forecast = forecast_highLow + forecast_image + forecast_description + forecast_humidity + forecast_wind + forecast_pressure;
+                var day = "#day" + (i + 1);
+                $(day).append(forecast);
+            }
+        };
+        var getWeather = function(data) {
             var weatherData = data;
         	console.log(weatherData);
             var today_highLow = weatherData.main.temp_max + ' &#8457 / ' + weatherData.main.temp_min + ' &#8457 ';
             console.log(weatherData.weather[0].icon);
-            var today_image = '<br><img src="http://openweathermap.org/img/w/' + weatherData.weather[0].icon + '.png" alt="">'
-            var today_description = '<br>' + '<strong>' + weatherData.weather[0].main + ': </strong>' + weatherData.weather[0].description;
-            var today_humidity = '<br><strong>Humidity: </strong>' + weatherData.main.humidity + '%';
-            var today_wind = '<br><strong>Wind: </strong>' + weatherData.wind.speed + ' mph, ' + weatherData.wind.deg + ' deg';   
-            var today_pressure = '<br><strong>Pressure: </strong>' + weatherData.main.pressure; 
+            var today_image = '<p><img src="http://openweathermap.org/img/w/' + weatherData.weather[0].icon + '.png" alt=""></p>'
+            var today_description = '<p><strong>' + weatherData.weather[0].main + ': </strong>' + weatherData.weather[0].description + '</p>';
+            var today_humidity = '<p><strong>Humidity: </strong>' + weatherData.main.humidity + '%</p>';
+            var today_wind = '<p><strong>Wind: </strong>' + weatherData.wind.speed + ' mph, ' + weatherData.wind.deg + ' deg</p>';   
+            var today_pressure = '<p><strong>Pressure: </strong>' + (weatherData.main.pressure * 0.0295333727).toFixed(2) + ' inHg</p>'; 
             var today = today_highLow + today_image + today_description + today_humidity + today_wind + today_pressure;
-            $('#today').html(today);
+            $('#today').append(today);
+        }; 
 
-
-        });
-	</script>
+        getTodaysWeather();
+        getForecastWeather(); 
+    </script>
+    <script src="/js/foundation.min.js"></script>
+    <script>$(document).foundation();</script>
 </body>
 </html>

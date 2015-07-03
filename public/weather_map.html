@@ -47,58 +47,35 @@
 </head>
 <body>
     <main>
-	<h1>Weather Application<small> | San Antonio</small></h1>
-    <div class="row" id="forecast"><h3>3 Day Forecast</h3>
-        <div id="day1" class="medium-4 panel display column"></div>
-        <div id="day2" class="medium-4 panel display column"></div>
-        <div id="day3" class="medium-4 panel display column"></div>
-    </div>
-    <form action="get">
-        <div class="row collapse">
-            <div class="medium-3 column">
-                <input id="latitude-input" type="text" placeholder="Latitude">
-            </div>
-            <div class="medium-3 column">
-                <input id="longitude-input" type="text" placeholder="Longitude">
-            </div>
-            <div class="medium-1 column left">
-                <button class="postfix" id="getCoordinates" type="button">Go!</button>
-            </div>    
+    	<h1>Weather Application<small> | San Antonio</small></h1>
+        <div class="row" id="forecast"><h3>3 Day Forecast</h3>
+            <div id="day1" class="medium-4 panel display column"></div>
+            <div id="day2" class="medium-4 panel display column"></div>
+            <div id="day3" class="medium-4 panel display column"></div>
         </div>
-    </form>
-    <div class="row">
-    <!-- div to hold map -->
-        <div id="map-canvas" class="medium-12 column"></div>
-    </div>
-    <div class="row"><h3>Today's Weather</h3>
-        <div id="today" class="medium-4 panel display column"></div>
-    </div>
-
+        <form action="get">
+            <div class="row collapse">
+                <div class="medium-3 column">
+                    <input id="latitude-input" type="text" placeholder="Latitude">
+                </div>
+                <div class="medium-3 column">
+                    <input id="longitude-input" type="text" placeholder="Longitude">
+                </div>
+                <div class="medium-1 column left">
+                    <button class="postfix" id="getCoordinates" type="button">Go!</button>
+                </div>    
+            </div>
+        </form>
+        <div class="row">
+        <!-- div to hold map -->
+            <div id="map-canvas" class="medium-12 column"></div>
+        </div>
     </main>
 	<script src="/js/jquery.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPIWmV7Hr4cSzUt_5xQryNKNfmqFRIGpk"></script>
 	<script>
         'use strict';
-        var getTodaysWeather = function() {
-            var ajaxRequest = $.get("http://api.openweathermap.org/data/2.5/weather", {
-                APPID: '6b489de4bdc204fcc2edd0aeb72f4542',
-                q: 'San Antonio, TX',
-                units: 'Imperial'
-            });
-
-            ajaxRequest.always(function(){
-                console.log('Request sent');
-            });
-
-            ajaxRequest.fail(function(){
-                console.log(error);
-                console.log(ajaxRequest.status);
-            });
-
-            ajaxRequest.done(function(data){
-                getWeather(data);
-            });
-        };
+       
         var getForecastWeather = function(lat, lon) {
     		var ajaxRequest = $.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
                 APPID: '6b489de4bdc204fcc2edd0aeb72f4542',
@@ -135,23 +112,10 @@
                 $(day).html(forecast);
             }
         };
-        var getWeather = function(data) {
-            var weatherData = data;
-        	console.log(weatherData);
-            var today_highLow = '<span>' + weatherData.main.temp_max.toFixed(0) + '&#176/ ' + weatherData.main.temp_min.toFixed(0) + '&#176</span>';
-            var today_image = '<p><img src="http://openweathermap.org/img/w/' + weatherData.weather[0].icon + '.png" alt=""></p>'
-            var today_description = '<p><strong>' + weatherData.weather[0].main + ': </strong>' + weatherData.weather[0].description + '</p>';
-            var today_humidity = '<p><strong>Humidity: </strong>' + weatherData.main.humidity + '%</p>';
-            var today_wind = '<p><strong>Wind: </strong>' + weatherData.wind.speed + ' mph, ' + weatherData.wind.deg + ' deg</p>';   
-            var today_pressure = '<p><strong>Pressure: </strong>' + (weatherData.main.pressure * 0.0295333727).toFixed(2) + ' inHg</p>'; 
-            var today = today_highLow + today_image + today_description + today_humidity + today_wind + today_pressure;
-            $('#today').append(today);
-        }; 
-
+        //renders 3 day forecast in San Antonio
         getForecastWeather(29.446756, -98.492432); 
-        getTodaysWeather();
+        //renders 3 day forecast according to user coordinate input
         $('#getCoordinates').click(function(){
-            //grab the values from lat and long and use for ajax request/ google map
             var lat = $("#latitude-input").val();
             var lon = $("#longitude-input").val();
             mapOptions = {
@@ -167,7 +131,7 @@
         var mapOptions = {
           // Set the zoom level
           zoom: 10,
-          // This sets the center of the map at our location
+          // This sets the center of the map in San Antonio
           center: { lat: 29.4284595, lng: -98.492433 }
         };
         // Render the map

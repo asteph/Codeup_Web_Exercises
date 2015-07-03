@@ -34,6 +34,10 @@
             font-size: 1.7rem;
             font-weight: bold;
         }
+        h1{
+            padding-left: 20px;
+            padding-top: 20px;
+        }
         h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
           color: #6f6f6f;
           font-size: 70%;
@@ -41,6 +45,7 @@
         }
         #map-canvas {
           height: 400px;
+          margin-bottom: 20px;
         }
 
     </style>
@@ -134,8 +139,23 @@
           // This sets the center of the map in San Antonio
           center: { lat: 29.4284595, lng: -98.492433 }
         };
+        //intial marker
+        var marker = new google.maps.Marker({
+            position: { lat: 29.4284595, lng: -98.492433 },
+            map: map,
+            animation: google.maps.Animation.DROP
+        });
         // Render the map
         var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+        //allow user to drop marker wherever they click
+        google.maps.event.addListener(map, 'click', function(event) {
+            marker.setMap(null);
+            marker = new google.maps.Marker({
+                position: event.latLng, 
+                map: map,
+                animation: google.maps.Animation.DROP
+            });
+        });
 
     </script>
     <script src="/js/foundation.min.js"></script>

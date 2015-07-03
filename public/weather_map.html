@@ -99,10 +99,11 @@
                 getWeather(data);
             });
         };
-        var getForecastWeather = function() {
+        var getForecastWeather = function(lat, lon) {
     		var ajaxRequest = $.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
                 APPID: '6b489de4bdc204fcc2edd0aeb72f4542',
-                q: 'San Antonio, TX',
+                lat: lat,
+                lon: lon,
                 units: 'Imperial'
             });
 
@@ -131,7 +132,7 @@
                 var forecast_pressure = '<p><strong>Pressure: </strong>' + (weatherData.list[i].pressure * 0.0295333727).toFixed(2) + ' inHg</p>'; 
                 var forecast = forecast_highLow + forecast_image + forecast_description + forecast_humidity + forecast_wind + forecast_pressure;
                 var day = "#day" + (i + 1);
-                $(day).append(forecast);
+                $(day).html(forecast);
             }
         };
         var getWeather = function(data) {
@@ -147,22 +148,25 @@
             $('#today').append(today);
         }; 
 
-        getForecastWeather(); 
+        getForecastWeather(29.446756, -98.492432); 
         getTodaysWeather();
         $('#getCoordinates').click(function(){
             //grab the values from lat and long and use for ajax request/ google map
+            var lat = $("#latitude-input").val();
+            var lon = $("#longitude-input").val();
             mapOptions = {
-                zoom: 15,
+                zoom: 10,
                 //center the map at the input lat/long 
-                center: new google.maps.LatLng($("#latitude-input").val(), $("#longitude-input").val())
+                center: new google.maps.LatLng(lat, lon)
             };
             //render map at new center
             map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+            getForecastWeather(lat, lon);
         }); 
         // Set initial map options
         var mapOptions = {
           // Set the zoom level
-          zoom: 15,
+          zoom: 10,
           // This sets the center of the map at our location
           center: { lat: 29.4284595, lng: -98.492433 }
         };

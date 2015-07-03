@@ -56,10 +56,10 @@
     <form action="get">
         <div class="row collapse">
             <div class="medium-3 column">
-                <input type="text" placeholder="Latitude">
+                <input id="latitude-input" type="text" placeholder="Latitude">
             </div>
             <div class="medium-3 column">
-                <input type="text" placeholder="Longitude">
+                <input id="longitude-input" type="text" placeholder="Longitude">
             </div>
             <div class="medium-1 column left">
                 <button class="postfix" id="getCoordinates" type="button">Go!</button>
@@ -122,8 +122,6 @@
         };
         var getForecast= function(data){
             var weatherData = data;
-            console.log(weatherData);
-            console.log(weatherData.list[0].temp.max);
             for(var i = 0; i < 3; i++){
                 var forecast_highLow = '<span>' + weatherData.list[i].temp.max.toFixed(0) + '&#176/ ' + weatherData.list[i].temp.min.toFixed(0) + '&#176</span>';
                 var forecast_image = '<p><img src="http://openweathermap.org/img/w/' + weatherData.list[i].weather[0].icon + '.png" alt=""></p>';
@@ -140,7 +138,6 @@
             var weatherData = data;
         	console.log(weatherData);
             var today_highLow = '<span>' + weatherData.main.temp_max.toFixed(0) + '&#176/ ' + weatherData.main.temp_min.toFixed(0) + '&#176</span>';
-            console.log(weatherData.weather[0].icon);
             var today_image = '<p><img src="http://openweathermap.org/img/w/' + weatherData.weather[0].icon + '.png" alt=""></p>'
             var today_description = '<p><strong>' + weatherData.weather[0].main + ': </strong>' + weatherData.weather[0].description + '</p>';
             var today_humidity = '<p><strong>Humidity: </strong>' + weatherData.main.humidity + '%</p>';
@@ -154,51 +151,24 @@
         getTodaysWeather();
         $('#getCoordinates').click(function(){
             //grab the values from lat and long and use for ajax request/ google map
-        }); // Set our map options
+            mapOptions = {
+                zoom: 15,
+                //center the map at the input lat/long 
+                center: new google.maps.LatLng($("#latitude-input").val(), $("#longitude-input").val())
+            };
+            //render map at new center
+            map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+        }); 
+        // Set initial map options
         var mapOptions = {
           // Set the zoom level
-          zoom: 18,
+          zoom: 15,
           // This sets the center of the map at our location
           center: { lat: 29.4284595, lng: -98.492433 }
         };
         // Render the map
         var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
-        // // Set our address to geocode
-        // var address = '111 W Crockett St, San Antonio, TX 78205';
-
-        // // Init geocoder object
-        // var geocoder = new google.maps.Geocoder();
-
-        // // Geocode our address
-        // geocoder.geocode( { 'address': address}, function(results, status) {
-        //   // Check for a successful result
-        //   if (status == google.maps.GeocoderStatus.OK) {
-        //   // Set our map options
-        //     var mapOptions = {
-        //       // Set the zoom level
-        //       zoom: 18,
-        //       // This sets the center of the map at our location
-        //       center: results[0].geometry.location
-        //     } 
-        //     //render the map
-        //     var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-        //     //add marker to existing map
-        //     var marker = new google.maps.Marker({
-        //     position: results[0].geometry.location,
-        //     map: map
-        //     });
-        //     // Create a new infoWindow object with content
-        //     var infowindow = new google.maps.InfoWindow({
-        //       content: '<img src="/images/italian_flag_favicon.jpg" alt="Italian Flag"/><strong><em>Paesanos:</em></strong><br><div>Timeless Italian on the San Antonio River Walk.</div>'
-        //     });
-        //     // Open the window using our map and marker
-        //     infowindow.open(map,marker);
-        //   } else{
-        //       // Show an error message with the status if our request fails
-        //       alert("Geocoding was not successful - STATUS: " + status);
-        //   }
-        // });
     </script>
     <script src="/js/foundation.min.js"></script>
     <script>$(document).foundation();</script>

@@ -58,19 +58,6 @@
             <div id="day2" class="medium-4 panel display column"></div>
             <div id="day3" class="medium-4 panel display column"></div>
         </div>
-        <form action="get">
-            <div class="row collapse">
-                <div class="medium-3 column">
-                    <input id="latitude-input" type="text" placeholder="Latitude">
-                </div>
-                <div class="medium-3 column">
-                    <input id="longitude-input" type="text" placeholder="Longitude">
-                </div>
-                <div class="medium-1 column left">
-                    <button class="postfix" id="getCoordinates" type="button">Go!</button>
-                </div>    
-            </div>
-        </form>
         <div class="row">
         <!-- div to hold map -->
             <div id="map-canvas" class="medium-12 column"></div>
@@ -81,7 +68,7 @@
 	<script>
         'use strict';
        
-        var getForecastWeather = function(lat, lon) {
+        var showForecastWeather = function(lat, lon) {
     		var ajaxRequest = $.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
                 APPID: '6b489de4bdc204fcc2edd0aeb72f4542',
                 lat: lat,
@@ -100,10 +87,10 @@
 
             ajaxRequest.done(function(data){
                 console.log(data);
-                getForecast(data);
+                showForecast(data);
             });
         };
-        var getForecast= function(data){
+        var showForecast= function(data){
             var weatherData = data;
             for(var i = 0; i < 3; i++){
                 var forecast_highLow = '<span>' + weatherData.list[i].temp.max.toFixed(0) + '&#176/ ' + weatherData.list[i].temp.min.toFixed(0) + '&#176</span>';
@@ -118,20 +105,8 @@
             }
         };
         //renders 3 day forecast in San Antonio
-        getForecastWeather(29.446756, -98.492432); 
-        //renders 3 day forecast according to user coordinate input
-        $('#getCoordinates').click(function(){
-            var lat = $("#latitude-input").val();
-            var lon = $("#longitude-input").val();
-            mapOptions = {
-                zoom: 10,
-                //center the map at the input lat/long 
-                center: new google.maps.LatLng(lat, lon)
-            };
-            //render map at new center
-            map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-            getForecastWeather(lat, lon);
-        }); 
+        showForecastWeather(29.446756, -98.492432); 
+        
         // Set initial map options
         var mapOptions = {
           // Set the zoom level
@@ -141,19 +116,18 @@
         };
         //intial marker
         var marker = new google.maps.Marker({
-            position: { lat: 29.4284595, lng: -98.492433 },
+            position: mapOptions.center,
             map: map,
             animation: google.maps.Animation.DROP
         });
         // Render the map
         var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-        //allow user to drop marker wherever they click
+        //allow user to drop marker wherever they click and weather updates to this location
         google.maps.event.addListener(map, 'click', function(event) {
             marker.setMap(null);
             var lat = event.latLng.A;
             var lon = event.latLng.F;
-            // map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-            getForecastWeather(lat, lon);
+            showForecastWeather(lat, lon);
             marker = new google.maps.Marker({
                 position: event.latLng, 
                 map: map,

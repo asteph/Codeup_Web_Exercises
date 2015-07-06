@@ -68,7 +68,7 @@
 	<script>
         'use strict';
        
-        var showForecastWeather = function(lat, lon) {
+        var getForecastWeather = function(lat, lon) {
     		var ajaxRequest = $.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
                 APPID: '6b489de4bdc204fcc2edd0aeb72f4542',
                 lat: lat,
@@ -105,7 +105,7 @@
             }
         };
         //renders 3 day forecast in San Antonio
-        showForecastWeather(29.446756, -98.492432); 
+        getForecastWeather(29.446756, -98.492432); 
         
         // Set initial map options
         var mapOptions = {
@@ -124,10 +124,13 @@
         });
         //allow user to drop marker wherever they click and weather updates to this location
         google.maps.event.addListener(map, 'click', function(event) {
+            //hide old markers
             marker.setMap(null);
+            //set lat and lon to location of click
             var lat = event.latLng.A;
             var lon = event.latLng.F;
-            showForecastWeather(lat, lon);
+
+            getForecastWeather(lat, lon);
             marker = new google.maps.Marker({
                 position: event.latLng, 
                 map: map,

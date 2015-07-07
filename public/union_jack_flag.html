@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>United Kingdom</title>
+	<style type="text/css">
+	body{
+		margin: 0px;
+	}
+	#rectangle{
+		z-index: -10;
+		height: 305px;
+		width: 560px;
+		background-color: #05325E;
+	}
+	#horizontal-cross{
+		z-index: 10;
+		position: absolute;
+		width: 560px;
+		height: 55px;
+		top: 120px;
+		background-color: #fff;
+	}
+	#horizontal-cross>div{
+		position: relative;
+		top: 8px;
+		height: 40px;
+		background-color: #BD1E41;
+	}
+	#vertical-cross{
+		position: absolute;
+		width: 60px;
+		height: 305px;
+		left: 250px;
+		background-color: #fff;
+	}
+	#vertical-cross>div{
+		z-index: 10;
+		position: relative;
+		left: 8px;
+		width: 40px;
+		height: 305px;
+		background-color: #BD1E41;
+	}
+	#parallelogram1{
+		position: absolute;
+		left: 220px;
+		width: 110px;
+		height: 305px;
+		-webkit-transform: skew(-62deg);
+		   -moz-transform: skew(-62deg);
+		     -o-transform: skew(-62deg);
+		background: #FFF;
+	}
+	#parallelogram1>div{
+		position: relative;
+		left: 35px;
+		width: 40px;
+		height: 305px;
+		background-color: #BD1E41;
+	}
+	#parallelogram2{
+		position: absolute;
+		left: 220px;
+		width: 110px;
+		height: 305px;
+		-webkit-transform: skew(62deg);
+		   -moz-transform: skew(62deg);
+		     -o-transform: skew(62deg);
+		background: #FFF;
+	}
+	#parallelogram2>div{
+		position: relative;
+		left: 35px;
+		width: 40px;
+		height: 305px;
+		background-color: #BD1E41;
+	}
+	#right-border{
+		position: absolute;
+		width: 30px;
+		height: 305px;
+		left: 560px;
+		background-color: #fff;
+	}
+
+	</style>
+<body>
+	<div id="rectangle">
+		<div id="horizontal-cross">
+			<div></div>
+		</div>
+		<div id="vertical-cross">
+			<div></div>
+		</div>	
+		<div id="parallelogram1">
+			<div></div>		
+		</div>	
+		<div id="parallelogram2">
+			<div></div>	
+		</div>
+		<div id="right-border"></div>
+	</div>
+</body>
+</html>

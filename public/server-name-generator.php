@@ -22,6 +22,6 @@ $randomNoun = ucfirst($nouns[array_rand($nouns)]);
 	</style>
 </head>
 <body>
-	<h1><?php echo  $randomAdjective . ' ' . $randomNoun ?><h1>
+	<h1><?php echo  "$randomAdjective $randomNoun" ?><h1>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<?php 
+<?
 
 $adjectives = ['omniscient', 'lackadaisical', 'devilish', 'resolute', 'evanescent', 'cagey', 'swanky', 'spiffy', 'cumbersome', 'cuddly'];
 $nouns = ['cats', 'tomatoes', 'sister', 'bushes', 'egg', 'beef', 'advice', 'twig', 'snail', 'cake'];
@@ -22,6 +22,6 @@ $randomNoun = ucfirst($nouns[array_rand($nouns)]);
 	</style>
 </head>
 <body>
-	<h1><?php echo  "$randomAdjective $randomNoun" ?><h1>
+	<h1><?= "$randomAdjective $randomNoun" ?><h1>
 </body>
 </html>

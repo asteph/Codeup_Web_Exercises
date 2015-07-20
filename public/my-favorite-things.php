@@ -1,5 +1,4 @@
-<?php  
-
+<?
 $favorites = ['The Fam Bam', 'The Outdoors', 'The Flying', 'The Literature', 'The Music'];
 
 ?>
@@ -19,7 +18,7 @@ $favorites = ['The Fam Bam', 'The Outdoors', 'The Flying', 'The Literature', 'Th
 	}
 	h1{
 		font: 400 3.5em/125% 'Berkshire Swash', Helvetica, Sans-serif;
-		line-height: 2em;
+		margin-bottom: 20px
 	}
 	table{
 		margin-left: auto;
@@ -36,15 +35,15 @@ $favorites = ['The Fam Bam', 'The Outdoors', 'The Flying', 'The Literature', 'Th
 <body>
 	<h1>Top 5 Favorite Things</h1>
 	<table>
-	<?php foreach($favorites as $key => $favorite){ ?>
+	<? foreach($favorites as $key => $favorite): ?>
 		<tr>
-		<?php if($key % 2 == 0){?>
+		<? if($key % 2 == 0): ?>
 			<td>
-		<?php } else {?>
+		<? else:?>
 			<td style="background-color: #F1F1F1">
-		<?php } ?>		
-		<?php echo $favorite ?></td></tr>
-	<?php } ?> 
+		<? endif; ?>		
+		<?= $favorite ?></td></tr>
+	<? endforeach; ?> 
 	</table>
 </body>
 </html>

@@ -1,6 +1,12 @@
 <?
-$favorites = ['The Fam Bam', 'The Outdoors', 'The Flying', 'The Literature', 'The Music'];
-
+function pageController()
+{
+	$favorites = ['The Fam Bam', 'The Outdoors', 'The Flying', 'The Literature', 'The Music'];
+	$data['favoriteThings'] = $favorites;
+	return $data;
+}
+// Call the pageController function and extract all the returned array as local variables.
+extract(pageController());
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +41,7 @@ $favorites = ['The Fam Bam', 'The Outdoors', 'The Flying', 'The Literature', 'Th
 <body>
 	<h1>Top 5 Favorite Things</h1>
 	<table>
-	<? foreach($favorites as $key => $favorite): ?>
+	<? foreach($favoriteThings as $key => $favorite): ?>
 		<tr>
 		<? if($key % 2 == 0): ?>
 			<td>

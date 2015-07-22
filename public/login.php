@@ -2,7 +2,7 @@
 var_dump($_POST);
 $message = null;
 if(!empty($_POST)){
-	if($_POST['username'] == 'guest' && $_POST['password'] == 'password'){
+	if(strtolower ($_POST['username']) == 'guest' && strtolower ($_POST['password']) == 'password'){
 		header('Location: authorized.php');
 	}else{
 		$message = 'Login Failed';

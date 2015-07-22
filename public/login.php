@@ -4,6 +4,7 @@ $message = null;
 if(!empty($_POST)){
 	if(strtolower ($_POST['username']) == 'guest' && strtolower ($_POST['password']) == 'password'){
 		header('Location: authorized.php');
+		exit();
 	}else{
 		$message = 'Login Failed';
 	}

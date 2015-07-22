@@ -1,6 +1,6 @@
 <?php
-$name = isset($_POST['name']) ? $_POST['name'] : '';
-$number = isset($_POST['number']) ? $_POST['number'] : '';
+$name = isset($_POST['name']) ? htmlspecialchars(strip_tags($_POST['name'])) : '';
+$number = isset($_POST['number']) ? htmlspecialchars(strip_tags($_POST['number'])) : '';
 ?>
 <!DOCTYPE html>
 <html>

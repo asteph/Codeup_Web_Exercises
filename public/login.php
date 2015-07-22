@@ -1,14 +1,27 @@
 <?php
 var_dump($_POST);
 $message = null;
+// start the session (or resume an existing one)
+// this function must be called before trying to set of get any session data!
+session_start();
+
+// check to see if user is loggedIn
+if (!empty($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == 'true') {
+    // redirect
+	header('Location: authorized.php');
+	exit();
+}
+//check current post values
 if(!empty($_POST)){
 	if(strtolower ($_POST['username']) == 'guest' && strtolower ($_POST['password']) == 'password'){
+		$_SESSION['loggedIn'] = 'true';
 		header('Location: authorized.php');
 		exit();
 	}else{
 		$message = 'Login Failed';
 	}
 }
+// store the new value to the session
 
 ?>
 <!DOCTYPE html>

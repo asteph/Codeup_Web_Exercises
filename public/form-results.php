@@ -1,6 +1,7 @@
 <?php
-$name = isset($_POST['name']) ? htmlspecialchars(strip_tags($_POST['name'])) : '';
-$number = isset($_POST['number']) ? htmlspecialchars(strip_tags($_POST['number'])) : '';
+require 'functions.php';
+$name = inputHas('name') ? escape(inputGet('name'))  : '';
+$number = inputHas('number') ? escape(inputGet('number'))  : '';
 ?>
 <!DOCTYPE html>
 <html>

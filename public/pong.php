@@ -1,5 +1,5 @@
 <?php
-
+require 'functions.php';
 // Require or include statements are allowed here. All other code goes in the pageController function.
 
 /**
@@ -12,10 +12,10 @@ function pageController()
    if (empty($_GET)){
        $counter = 0;
        $play = 'SERVE IT!';
-   }else if($_GET['action'] == 'hit'){
+   }else if(inputGet('action') == 'hit'){
        $counter = (int)$_GET['counter'] + 1;
        $play = 'PONG!';
-   }else if ($_GET['action'] == 'miss'){
+   }else if (inputGet('action') == 'miss'){
        $counter = 0;
        $play = 'GAME OVER';
 

@@ -1,4 +1,5 @@
 <?php
+require 'functions.php';
 var_dump($_POST);
 $message = null;
 // start the session (or resume an existing one)
@@ -13,7 +14,7 @@ if (!empty($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == 'true') {
 }
 //check current post values
 if(!empty($_POST)){
-	if(strtolower ($_POST['username']) == 'guest' && strtolower ($_POST['password']) == 'password'){
+	if(escape(inputGet('username')) == 'guest' && escape(inputGet('password')) == 'password'){
 		$_SESSION['loggedIn'] = 'true';
 		header('Location: authorized.php');
 		exit();

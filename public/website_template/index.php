@@ -5,17 +5,52 @@
 	<title>Website Template</title>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<style>
+	/* Sticky footer styles
+	-------------------------------------------------- */
+	html {
+	  position: relative;
+	  min-height: 100%;
+	}
+	body {
+	  /* Margin bottom by footer height */
+	  margin-bottom: 60px;
+	}
+	.footer {
+	  position: absolute;
+	  bottom: 0;
+	  width: 100%;
+	  /* Set the fixed height of the footer here */
+	  height: 60px;
+	  background-color: #f5f5f5;
+	}
+	/* Custom page CSS
+	-------------------------------------------------- */
+	/* Not required for template or sticky footer method. */
+	body > .container {
+	  padding: 60px 15px 0;
+	}
+	.container .text-muted {
+	  margin: 20px 0;
+	}
+	.footer > .container {
+	  padding-right: 15px;
+	  padding-left: 15px;
+	}
+	code {
+	  font-size: 80%;
+	}
+</style>
 </head>
 <body>
-	<?php require 'navbar.php'; ?>
-	<?php require 'header.php'; ?>
-	<?php require 'footer.php'; ?>
+<!-- jquery  -->
+<script src="/js/jquery.js"></script>
+	<?php include 'navbar.php'; ?>
+	<?php include 'header.php'; ?>
+	<?php include 'footer.php'; ?>
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </body>
 </html>

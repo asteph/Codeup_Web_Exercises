@@ -1,10 +1,4 @@
-<!-- Fixed navbar for bootstrap -->
-<style>
-  body {
-    min-height: 2000px;
-    padding-top: 70px;
-  }
-</style>
+<!-- Fixed navbar -->
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
@@ -16,7 +10,7 @@
       </button>
       <a class="navbar-brand" href="#">Project name</a>
     </div>
-    <div id="navbar" class="navbar-collapse collapse">
+    <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
         <li><a href="#about">About</a></li>
@@ -33,11 +27,6 @@
             <li><a href="#">One more separated link</a></li>
           </ul>
         </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="../navbar/">Default</a></li>
-        <li><a href="../navbar-static-top/">Static top</a></li>
-        <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>

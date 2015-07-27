@@ -1,6 +1,6 @@
 <?php
 require_once '../Input.php';
-require 'functions.php';
+// require 'functions.php';
 // Require or include statements are allowed here. All other code goes in the pageController function.
 
 /**

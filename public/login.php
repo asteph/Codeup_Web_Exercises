@@ -1,5 +1,7 @@
 <?php
-require 'functions.php';
+require_once '../Input.php';
+require_once '../Auth.php';
+require 'functions.php'; 
 var_dump($_POST);
 $message = null;
 // start the session (or resume an existing one)
@@ -7,20 +9,14 @@ $message = null;
 session_start();
 
 // check to see if user is loggedIn
-if (!empty($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == 'true') {
+if (Auth::check()) {
     // redirect
 	header('Location: authorized.php');
 	exit();
 }
 //check current post values
-if(!empty($_POST)){
-	if(escape(inputGet('username')) == 'guest' && escape(inputGet('password')) == 'password'){
-		$_SESSION['loggedIn'] = 'true';
-		header('Location: authorized.php');
-		exit();
-	}else{
-		$message = 'Login Failed';
-	}
+if(Input::has('username') && Input::has('password')){
+	Auth::attempt(escape(Input::get('username')), escape(Input::get('password')));
 }
 // store the new value to the session
 

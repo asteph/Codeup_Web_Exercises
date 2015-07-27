@@ -1,4 +1,6 @@
 <?php
+require_once '../Input.php';
+require_once '../Auth.php';
 	session_start();
 	if($_SESSION['loggedIn'] != 'true'){
 		header('Location: login.php');

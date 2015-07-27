@@ -34,6 +34,6 @@ if(Input::has('username') && Input::has('password')){
         <input type="password" name="password"><br>
         <input type="submit">
     </form>
-    <?= $message ?>
+    <?= Auth::$message ?>
 </body>
 </html>

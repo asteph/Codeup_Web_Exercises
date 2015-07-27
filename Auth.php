@@ -3,6 +3,8 @@ require_once 'Log.php';
 require_once 'Input.php';
 class Auth
 {
+	//static message variable
+	public static $message;
 	//string 'password' hashed
 	public static $password = '$2y$10$SLjwBwdOVvnMgWxvTI4Gb.YVcmDlPTpQystHMO2Kfyi/DS8rgA0Fm';
 	public static function attempt($username, $password)
@@ -16,7 +18,7 @@ class Auth
     		header('Location: authorized.php');
     		exit();
     	}else{
-    		$message = 'Login Failed';
+    		self::$message = 'Login Failed';
     		$log->error("User {$username} failed to log in!");
     	}
     

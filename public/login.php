@@ -14,11 +14,11 @@ if (Auth::check()) {
 	header('Location: authorized.php');
 	exit();
 }
-//check current post values
+//check current post values using Auth method
 if(Input::has('username') && Input::has('password')){
 	Auth::attempt(escape(Input::get('username')), escape(Input::get('password')));
 }
-// store the new value to the session
+
 
 ?>
 <!DOCTYPE html>
@@ -34,6 +34,7 @@ if(Input::has('username') && Input::has('password')){
         <input type="password" name="password"><br>
         <input type="submit">
     </form>
+    <!-- show if the login failed -->
     <?= Auth::$message ?>
 </body>
 </html>

@@ -5,7 +5,6 @@ define('DB_USER', 'parks_user');
 define('DB_PASS', '');
 
 require_once 'db_connect.php';
-echo $dbc->getAttribute(PDO::ATTR_CONNECTION_STATUS) . "\n";
 
 // Create the query and assign to var
 $createTable = 

@@ -86,30 +86,30 @@ if (Input::has('name') && Input::has('location') && Input::has('date_established
 	<h2>Add a Park</h2>
 	<form role="form">
 		<div class="form-group">
-			<div class="col-xs-3">
+			<div class="col-md-3">
 				<label for="name">Park Name:</label>
 				<input name="name" type="text" class="form-control" id="name">
 			</div>
 		</div>
-		<div class="col-xs-3">
+		<div class="col-md-3">
 			<div class="form-group">
 				<label for="location">Location:</label>
 				<input name="location" type="text" class="form-control" id="location">
 			</div>
 		</div>
-		<div class="col-xs-3">
+		<div class="col-md-3">
 			<div class="form-group">
 				<label for="date_established">Date Established:</label>
 				<input name="date_established" type="text" class="form-control" id="date_establis">
 			</div>
 		</div>
-		<div class="col-xs-3">
+		<div class="col-md-3">
 			<div class="form-group">
 				<label for="Area">Area in Acres:</label>
 				<input name="area_in_acres" type="text" class="form-control" id="Area">
 			</div>
 		</div>
-		<div class="col-xs-12">
+		<div class="col-md-12">
 			<div class="form-group">
 				<label for="description">Description:</label>
 				<input name="description" type="text" class="form-control" id="description">

@@ -44,7 +44,7 @@ if (Input::has('name') && Input::has('location') && Input::has('date_established
 			margin-left: auto;
 			margin-right: auto;
 			margin-bottom: 4em;
-			padding-top: 4em;
+			padding-top: 1em;
 		}
 	</style>
 	</head>
@@ -111,8 +111,8 @@ if (Input::has('name') && Input::has('location') && Input::has('date_established
 		</div>
 		<div class="col-md-12">
 			<div class="form-group">
-				<label for="description">Description:</label>
-				<input name="description" type="text" class="form-control" id="description">
+			  <label for="description">Description:</label>
+			  <textarea name="description" class="form-control" rows="5" id="description"></textarea>
 			</div>
 		</div>
 		<button type="submit" class="btn btn-primary">Submit</button>

@@ -46,14 +46,12 @@ if (Input::has('name') && Input::has('location') && Input::has('date_established
 			margin-bottom: 4em;
 			padding-top: 4em;
 		}
-		form{
-			margin-top: 4em;
-		}
 	</style>
 	</head>
 </head>
 <body>
-	<table class = 'table table-bordered'>
+	<h1>National Parks</h1>
+	<table class = 'table table-body table-striped'>
 		<thead>
 		    <tr>
 		        <th>Name</th>
@@ -75,35 +73,49 @@ if (Input::has('name') && Input::has('location') && Input::has('date_established
 			<? endforeach; ?>
 		</tbody>
 	</table>
-	<?php if($page != 1): ?>
-		<a href="?page=<?= $previousPage ?>" class="btn btn-default">PREVIOUS</a>
-	<?php endif; ?>
-	<?php if($page < $lastPage): ?>
-	<a href="?page=<?= $nextPage ?>" class="btn btn-default">NEXT</a>
-	<?php endif; ?>
-
+	<nav>
+	  <ul class="pager">
+		<?php if($page != 1): ?>
+		    <li class="previous"><a href="?page=<?= $previousPage ?>"><span aria-hidden="true">&larr;</span>PREVIOUS</a></li>
+		<?php endif; ?>
+		<?php if($page < $lastPage): ?>
+	    <li class="next"><a href="?page=<?= $nextPage ?>">NEXT<span aria-hidden="true">&rarr;</span></a></li>
+		<?php endif; ?>
+	  </ul>
+	</nav>
+	<h2>Add a Park</h2>
 	<form role="form">
-	  <div class="form-group">
-	    <label for="name">Park Name:</label>
-	    <input name="name" type="text" class="form-control" id="name">
-	  </div>
-	  <div class="form-group">
-	    <label for="location">Location:</label>
-	    <input name="location" type="text" class="form-control" id="location">
-	  </div>
-	  <div class="form-group">
-	    <label for="date_established">Date Established:</label>
-	    <input name="date_established" type="text" class="form-control" id="date-est">
-	  </div>
-	  <div class="form-group">
-	    <label for="Area">Area in Acres:</label>
-	    <input name="area_in_acres" type="text" class="form-control" id="Area">
-	  </div>
-	  <div class="form-group">
-	    <label for="description">Description:</label>
-	    <input name="description" type="textarea" class="form-control" id="description">
-	  </div>
-	  <button type="submit" class="btn btn-default">Submit</button>
+		<div class="form-group">
+			<div class="col-xs-3">
+				<label for="name">Park Name:</label>
+				<input name="name" type="text" class="form-control" id="name">
+			</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="form-group">
+				<label for="location">Location:</label>
+				<input name="location" type="text" class="form-control" id="location">
+			</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="form-group">
+				<label for="date_established">Date Established:</label>
+				<input name="date_established" type="text" class="form-control" id="date_establis">
+			</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="form-group">
+				<label for="Area">Area in Acres:</label>
+				<input name="area_in_acres" type="text" class="form-control" id="Area">
+			</div>
+		</div>
+		<div class="col-xs-12">
+			<div class="form-group">
+				<label for="description">Description:</label>
+				<input name="description" type="text" class="form-control" id="description">
+			</div>
+		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
 	</form>
 </body>
 </html>

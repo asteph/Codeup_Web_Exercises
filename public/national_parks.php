@@ -20,11 +20,11 @@ $parkInfo = $parks->fetchAll(PDO::FETCH_ASSOC);
 
 $newPark = $dbc->prepare('INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES (:name, :location, :date_established, :area_in_acres, :description)');
 if (Input::has('name') && Input::has('location') && Input::has('date_established') && Input::has('area_in_acres') && Input::has('description')){
-	$newPark->bindValue(':name', Input::get('name'), PDO::PARAM_STR);
-    $newPark->bindValue(':location',  Input::get('location'),  PDO::PARAM_STR);
-    $newPark->bindValue(':date_established',  Input::get('date_established'),  PDO::PARAM_STR);
-    $newPark->bindValue(':area_in_acres',  Input::get('area_in_acres'),  PDO::PARAM_INT);
-    $newPark->bindValue(':description',  Input::get('description'),  PDO::PARAM_STR);
+	$newPark->bindValue(':name', Input::getString('name'), PDO::PARAM_STR);
+    $newPark->bindValue(':location',  Input::getString('location'),  PDO::PARAM_STR);
+    $newPark->bindValue(':date_established',  Input::getDate('date_established'),  PDO::PARAM_STR);
+    $newPark->bindValue(':area_in_acres',  Input::getNumber('area_in_acres'),  PDO::PARAM_INT);
+    $newPark->bindValue(':description',  Input::getString('description'),  PDO::PARAM_STR);
     $newPark->execute();
 }
 

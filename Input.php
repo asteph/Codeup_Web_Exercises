@@ -2,6 +2,56 @@
 
 class Input
 {
+    public static function getString($key)
+    {
+        $string = Input::get($key);
+        if(!is_numeric($string)){
+            return $string;
+        }else{
+            throw new Exception($string . ' needs to be a string.');
+        }
+        
+    }
+    public static function getDate($key)
+    {
+        $date = Input::get($key);
+        $dateArray = explode("-", $date);
+
+        //(checkdate($d,$m,$y));
+        if(checkdate((int)$dateArray[1], (int)$dateArray[2], (int)$dateArray[0])) {
+            return $date;
+        }
+        else {
+            throw new Exception($date . ' is not a valid date.');
+        }
+        
+    }
+    // GOT AN ERROR FOR $dateObject->date
+    // public static function getDate($key)
+    // {
+    //     $value = Input::get($key);
+    //     $format = 'Y-m-d';
+
+    //     $dateObject = DateTime::createFromFormat($format, $value);
+        
+
+    //     if($dateObject) {
+    //         return $dateObject->date;
+    //     } else {
+    //         throw new Exception($date . ' :this must be a valid date');
+    //     }
+
+    // }
+    public static function getNumber($key)
+    {
+        $number = Input::get($key);
+        if(is_numeric($number)){
+            return $number;
+        }else{
+            throw new Exception($number . ' needs to be a number.');
+        }
+
+    }
     /**
      * Check if a given value was passed in the request
      *
@@ -24,13 +74,13 @@ class Input
      * @param mixed $default default value to return if key not found
      * @return mixed value passed in request
      */
-    public static function get($key, $default = null)
+    public static function get($key)
     {
         if (isset($_REQUEST[$key])){
-            return $_REQUEST[$key];
+            return trim($_REQUEST[$key]);
         }
         else{
-            return $default;
+            throw new Exception('The value you are requesting does not exist.');
         }
     }
 

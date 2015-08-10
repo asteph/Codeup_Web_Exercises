@@ -7,6 +7,7 @@ define('DB_PASS', '');
 require_once '../db_connect.php';
 require_once '../Input.php';
 $limit = 4;
+$errors = array();
 $lastPage = ceil(($dbc->query('SELECT count(*) FROM national_parks')->fetchColumn())/$limit);
 $page = Input::has('page')? Input::get('page') : 1;
 $nextPage = $page + 1; 
@@ -20,12 +21,42 @@ $parkInfo = $parks->fetchAll(PDO::FETCH_ASSOC);
 
 $newPark = $dbc->prepare('INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES (:name, :location, :date_established, :area_in_acres, :description)');
 if (Input::has('name') && Input::has('location') && Input::has('date_established') && Input::has('area_in_acres') && Input::has('description')){
-	$newPark->bindValue(':name', Input::getString('name'), PDO::PARAM_STR);
-    $newPark->bindValue(':location',  Input::getString('location'),  PDO::PARAM_STR);
-    $newPark->bindValue(':date_established',  Input::getDate('date_established'),  PDO::PARAM_STR);
-    $newPark->bindValue(':area_in_acres',  Input::getNumber('area_in_acres'),  PDO::PARAM_INT);
-    $newPark->bindValue(':description',  Input::getString('description'),  PDO::PARAM_STR);
-    $newPark->execute();
+	try{
+		$newPark->bindValue(':name', Input::getString('name'), PDO::PARAM_STR);
+	}catch(InvalidArgumentException $e){
+		$errors[] = $e->getMessage();
+	}catch(OutOfRangeException $e){
+		$errors[] = $e->getMessage();
+	}catch(DomainException $e){
+		$errors[] = $e->getMessage();
+	}catch(LengthException $e){
+		$errors[] = $e->getMessage();
+	}catch(Exception $e){
+		$errors[] = $e->getMessage();
+	}
+	try{
+	    $newPark->bindValue(':location',  Input::getString('location'),  PDO::PARAM_STR);
+    }catch(Exception $e){
+		$errors[] = $e->getMessage();
+	}
+	try{
+	    $newPark->bindValue(':date_established',  Input::getDate('date_established'),  PDO::PARAM_STR);
+    }catch(Exception $e){
+		$errors[] = $e->getMessage();
+	}
+	try{
+	    $newPark->bindValue(':area_in_acres',  Input::getNumber('area_in_acres'),  PDO::PARAM_INT);
+    }catch(Exception $e){
+		$errors[] = $e->getMessage();
+	}
+	try{
+	    $newPark->bindValue(':description',  Input::getString('description'),  PDO::PARAM_STR);
+    }catch(Exception $e){
+		$errors[] = $e->getMessage();
+	}
+	if(empty($errors)){
+	    $newPark->execute();
+	}
 }
 
 ?>
@@ -84,29 +115,32 @@ if (Input::has('name') && Input::has('location') && Input::has('date_established
 	  </ul>
 	</nav>
 	<h2>Add a Park</h2>
+	<?php foreach($errors as $error): ?>
+		<p><?= $error ?></p>
+	<?php endforeach; ?>
 	<form role="form">
 		<div class="form-group">
 			<div class="col-md-3">
 				<label for="name">Park Name:</label>
-				<input name="name" type="text" class="form-control" id="name">
+				<input value="<?= Input::get('name'); ?>" name="name" type="text" class="form-control" id="name">
 			</div>
 		</div>
 		<div class="col-md-3">
 			<div class="form-group">
 				<label for="location">Location:</label>
-				<input name="location" type="text" class="form-control" id="location">
+				<input value="<?= Input::get('location'); ?>" name="location" type="text" class="form-control" id="location">
 			</div>
 		</div>
 		<div class="col-md-3">
 			<div class="form-group">
 				<label for="date_established">Date Established:</label>
-				<input name="date_established" type="text" class="form-control" id="date_establis">
+				<input value="<?= Input::get('date_established'); ?>" name="date_established" type="text" class="form-control" id="date_establis">
 			</div>
 		</div>
 		<div class="col-md-3">
 			<div class="form-group">
 				<label for="Area">Area in Acres:</label>
-				<input name="area_in_acres" type="text" class="form-control" id="Area">
+				<input value="<?= Input::get('area_in_acres'); ?>" name="area_in_acres" type="text" class="form-control" id="Area">
 			</div>
 		</div>
 		<div class="col-md-12">

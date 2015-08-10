@@ -1,56 +1,76 @@
 <?php
 
+
 class Input
 {
-    public static function getString($key)
+    public static function getString($key, $min = 1, $max = 255 )
     {
         $string = Input::get($key);
-        if(!is_numeric($string)){
-            return $string;
+        if(empty($string)){
+            throw new OutOfRangeException("{$key} does not have a value.");
+        }else if(!is_numeric($key) && is_numeric($min) && is_numeric($max)){
+            if(!is_numeric($string)){
+                if(strlen($string) > $min && strlen($string) < $max){
+                    return $string;
+                }else{
+                    throw new LengthException("The number of characters in ({$string}) must be greater than {$min} and less than {$max}.");
+                }
+            }else{
+                throw new DomainException("{$string} needs to be a string.");
+            }
         }else{
-            throw new Exception($string . ' needs to be a string.');
+            throw new InvalidArgumentException("{$key} needs to be a string, and {$min} and {$max} should be numeric.");
         }
         
     }
-    public static function getDate($key)
-    {
-        $date = Input::get($key);
-        $dateArray = explode("-", $date);
-
-        //(checkdate($d,$m,$y));
-        if(checkdate((int)$dateArray[1], (int)$dateArray[2], (int)$dateArray[0])) {
-            return $date;
-        }
-        else {
-            throw new Exception($date . ' is not a valid date.');
-        }
-        
-    }
-    // GOT AN ERROR FOR $dateObject->date
     // public static function getDate($key)
     // {
-    //     $value = Input::get($key);
-    //     $format = 'Y-m-d';
+    //     $date = Input::get($key);
+    //     $dateArray = explode("-", $date);
 
-    //     $dateObject = DateTime::createFromFormat($format, $value);
-        
-
-    //     if($dateObject) {
-    //         return $dateObject->date;
-    //     } else {
-    //         throw new Exception($date . ' :this must be a valid date');
+    //     //(checkdate($d,$m,$y));
+    //     if(checkdate((int)$dateArray[1], (int)$dateArray[2], (int)$dateArray[0])) {
+    //         return $date;
     //     }
-
+    //     else {
+    //         throw new Exception($date . ' is not a valid date.');
+    //     }
+        
     // }
-    public static function getNumber($key)
+
+    public static function getDate($key)
     {
-        $number = Input::get($key);
-        if(is_numeric($number)){
-            return $number;
-        }else{
-            throw new Exception($number . ' needs to be a number.');
+        $value = Input::get($key);
+        $format = 'Y-m-d';
+
+        $dateObject = DateTime::createFromFormat($format, $value);
+        if($dateObject) {
+            $dateString = $dateObject->format($format);
+            return $dateString;
+        } else {
+            throw new Exception($value . ' is not a valid date.');
         }
 
+    }
+    public static function getNumber($key, $min = 1, $max = 9999999999.99 )
+    {
+        $number = Input::get($key);
+        if(empty($number)){
+            throw new OutOfRangeException("{$key} does not have a value.");
+        }else if(!is_numeric($key) && is_numeric($min) && is_numeric($max)){
+            if(is_numeric($number)){
+                if($number > $min && $number < $max){
+                    return $number;
+                }else{
+                    throw new RangeException("The number ({$number}) must be greater than {$min} and less than {$max}.");
+                }
+            }else{
+                throw new DomainException("{$number} needs to be a number.");
+            }
+        }else{
+            throw new InvalidArgumentException("{$key} needs to be a string, and {$min} and {$max} should be numeric.");
+        }
+        
     }
     /**
      * Check if a given value was passed in the request
@@ -74,13 +94,13 @@ class Input
      * @param mixed $default default value to return if key not found
      * @return mixed value passed in request
      */
-    public static function get($key)
+    public static function get($key, $default = null)
     {
         if (isset($_REQUEST[$key])){
             return trim($_REQUEST[$key]);
         }
         else{
-            throw new Exception('The value you are requesting does not exist.');
+            return $default;
         }
     }
 

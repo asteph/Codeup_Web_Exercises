@@ -6,9 +6,28 @@
 </head>
 <body ng-app="glacierAngular">
 	
+	<!-- look into ng-cloak to prevent load flash -->
 	<h1>{{"Angular Example" | uppercase}}</h1>
 
 	<p>Let's do math!!! {{ 23423 + 32423 / 342 | number:2 }}</p>
+
+	<ul>
+	    <li ng-if="1 < 2">One is Less Than Two</li>
+	    <li ng-if="1 <= 2">One is Less Than or Equal to Two</li>
+	    <li ng-if="1 == 2">One is Equal to Two</li>
+	    <li ng-if="1 >= 2">One is Greater Than or Equal to Two</li>
+	    <li ng-if="1 > 2">One is Greater Than Two</li>
+	</ul>
+
+	<ol>
+	    <li ng-repeat="letter in ['A', 'B', 'C', 'D', 'E', 'F']">{{ letter }}</li>
+	</ol>
+
+	<ul>
+	    <li ng-repeat="num in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" ng-if="num % 2 == 0">
+	        {{ num }} is even!
+	    </li>
+	</ul>
 
 	<script type="text/javascript" src="/js/angular/angular.min.js"></script><script type="text/javascript" src="/js/glacierAngular.js"></script>
 </body>
